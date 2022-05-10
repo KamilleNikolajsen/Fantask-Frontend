@@ -4,11 +4,11 @@ const urlCrossSearch = "http://localhost/category";
 const formCross = document.querySelector('#formSearchCrossCategories');
 
 const inputCrossFTS = document.querySelector('#searchAllFTSInput');
-const unavailableCross = document.querySelector('#searchAlludgået');
-const outOfStockCross = document.querySelector('#searchAlludsolgte');
-const coming = document.querySelector('#searchAllkommende');
-const hiddenCross = document.querySelector('#searchAllskjulte');
-const onSaleCross = document.querySelector('#searchAlltilbud');
+const unavailableCross = document.querySelector('#searchAllUnavailable');
+const outOfStockCross = document.querySelector('#searchAllOutOfStock');
+const coming = document.querySelector('#searchAllComing');
+const hiddenCross = document.querySelector('#searchAllHidden');
+const onSaleCross = document.querySelector('#searchAllOnSale');
 const boxCross = document.querySelector('#searchAllbox');
 
 formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {
