@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Cross Categories</title>
+  <link rel="stylesheet" href="/css/generic.css">
+  <link rel="stylesheet" href="/css/searchAllCategories.css">
+
+  <script src="https://kit.fontawesome.com/bced513090.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="content">
+  <div id="search">
+    <form method="get" id="formSearchCrossCategories">
+
+      <input type="text" placeholder="Titel, forfatter etc." id="searchAllFTSInput" class="input">
+
+      <select id="categoryDropDown" class="dropdown"></select>
+
+      <div id="udgået">
+        <input type="checkbox" id="searchAlludgået">
+        <label for="searchAlludgået">Ekskluder udgåede</label>
+      </div>
+
+      <div id="udsolgt">
+        <input type="checkbox" id="searchAlludsolgte">
+        <label for="searchAlludsolgte">Ekskluder udsolgte</label>
+      </div>
+
+      <div id="kommende">
+        <input type="checkbox" id="searchAllkommende">
+        <label for="searchAllkommende">Vis kommende</label>
+      </div>
+
+      <div id="skjult">
+        <input type="checkbox" id="searchAllskjulte">
+        <label for="searchAllskjulte">Vis Skjulte</label>
+      </div>
+
+      <div id="tilbud">
+        <input type="checkbox" id="searchAlltilbud">
+        <label for="searchAlltilbud">Vis Tilbud</label>
+      </div>
+
+      <div id="box">
+        <input type="checkbox" id="searchAllbox">
+        <label for="searchAllbox">Vis boxed</label>
+      </div>
+
+      <input type="submit" value="Søg" class="button">
+
+    </form>
+
+    <div id="showSearchedList">
+      <table class="table">
+
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script src="/js/crosssend.js"></script>
+</body>
+</html>

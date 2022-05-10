@@ -1,0 +1,33 @@
+* {
+  font-family: "Times New Roman";
+}
+
+.input {
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 20px
+}
+
+.dropdown {
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 20px
+}
+
+.button {
+  border-radius: 5px;
+  padding: 3px 40px;
+  background-color: rgba(76, 143, 208, 0.26);
+  border-color: rgba(44, 90, 124, 0.66);
+  font-size: 20px
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(162, 211, 239, 0.4);
+  color: #344457;
+}
+
+.table {
+  border-top: #344457;
+}
