@@ -4,14 +4,22 @@ const urlCrossSearch = "http://localhost/category";
 const formCross = document.querySelector('#formSearchCrossCategories');
 
 const inputCrossFTS = document.querySelector('#searchAllFTSInput');
-const udgåetCross = document.querySelector('#searchAlludgået');
-const udsolgtCross = document.querySelector('#searchAlludsolgte');
-const kommendeCross = document.querySelector('#searchAllkommende');
-const skjultCross = document.querySelector('#searchAllskjulte');
-const tilbudCross = document.querySelector('#searchAlltilbud');
+const unavailableCross = document.querySelector('#searchAlludgået');
+const outOfStockCross = document.querySelector('#searchAlludsolgte');
+const coming = document.querySelector('#searchAllkommende');
+const hiddenCross = document.querySelector('#searchAllskjulte');
+const onSaleCross = document.querySelector('#searchAlltilbud');
 const boxCross = document.querySelector('#searchAllbox');
 
-formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {}));
+formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {
+  input: inputCrossFTS.value,
+  unavailable: unavailableCross.value,
+  outOfStock: outOfStockCross.value,
+  coming: coming.value,
+  hidden: hiddenCross.value,
+  onSale: onSaleCross.value,
+  box: boxCross.value
+}));
 
 async function displayTable(list) {
   // tag table
