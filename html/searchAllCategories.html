@@ -15,7 +15,25 @@
 
       <input type="text" placeholder="Titel, forfatter etc." id="searchAllFTSInput" class="input">
 
-      <select id="categoryDropDown" class="dropdown"></select>
+      <select id="categoryDropDown" class="dropdown" name="dropdowncategory">
+        <option value="all" selected>Alle</option>
+        <option value="comic">Tegneserier</option>
+        <option value="book">Bøger</option>
+        <option value="game">Spil</option>
+        <option value="figure">Figurer</option>
+        <option value="film">Film</option>
+      </select>
+
+      <select id="timeDropDown" class="dropdown" name="dropdowntime">
+        <option value="intet" selected>Vis alle</option>
+        <option value="4dag">4 dage siden</option>
+        <option value="1uge">1 uge siden</option>
+        <option value="3uge">3 uger siden</option>
+        <option value="2måneder">2 måneder siden</option>
+        <option value="6måneder">6 måneder siden</option>
+      </select>
+
+      <div id="manipulateSection"></div>
 
       <div id="unavailable">
         <input type="checkbox" id="searchAllunavailable">
@@ -59,7 +77,8 @@
   </div>
 </div>
 
-<script src="/js/search.js"></script>
+<script src="/js/searchcrossall.js"></script>
+<script src="/js/displaytable.js"></script>
 <script src="/js/crosssend.js"></script>
 </body>
 </html>
