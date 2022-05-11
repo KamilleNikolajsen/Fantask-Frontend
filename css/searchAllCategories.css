@@ -56,7 +56,7 @@
   place-self: center;
 }
 
-#hidden {
+#hide {
   grid-column: 2/3;
   grid-row: 3;
   place-self: center;

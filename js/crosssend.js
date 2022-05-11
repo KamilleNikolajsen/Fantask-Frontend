@@ -7,7 +7,7 @@ const inputCrossFTS = document.querySelector('#searchAllFTSInput');
 const unavailableCross = document.querySelector('#searchAllUnavailable');
 const outOfStockCross = document.querySelector('#searchAllOutOfStock');
 const coming = document.querySelector('#searchAllComing');
-const hiddenCross = document.querySelector('#searchAllHidden');
+const hideCross = document.querySelector('#searchAllHide');
 const onSaleCross = document.querySelector('#searchAllOnSale');
 const boxCross = document.querySelector('#searchAllbox');
 
@@ -16,7 +16,7 @@ formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSear
   unavailable: unavailableCross.value,
   outOfStock: outOfStockCross.value,
   coming: coming.value,
-  hidden: hiddenCross.value,
+  hide: hideCross.value,
   onSale: onSaleCross.value,
   box: boxCross.value
 }));
