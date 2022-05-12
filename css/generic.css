@@ -4,28 +4,32 @@
 
 .input {
   border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 2px;
   padding: 5px 5px;
   font-size: 20px
 }
 
 .dropdown {
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 3px;
   font-size: 20px
 }
 
 .button {
-  border-radius: 5px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 2px;
   padding: 3px 40px;
-  background-color: rgba(76, 143, 208, 0.26);
-  border-color: rgba(44, 90, 124, 0.66);
+  background-color: rgba(224, 238, 253, 0.54);
   font-size: 20px
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: rgba(162, 211, 239, 0.4);
-  color: #344457;
+  background-color: rgb(23, 109, 168);
+  color: white;
+  box-shadow: 0 0 10px;
 }
 
 .table {
