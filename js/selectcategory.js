@@ -28,6 +28,7 @@ function displaySelectedCategory(event) {
 
 async function displaySearchFieldBook() {
   // clear memory
+  manipulativeSection.innerHTML = '';
 
   // Insæt felter over boolean for bog
   // indsæt isbn input felt
@@ -47,14 +48,32 @@ async function displaySearchFieldBook() {
   //indsæt options fra fetch
   dropdownpub.appendChild();
   // indsæt dropdown genre
-
+  const dropdowngenre = appendManipulativeSection('divgenre')
+  //fetch drowdown for genre
 
   //her
 }
 
-function fillDropDown() {
+
+
+function displaySearchFieldComic() {
 
 }
+
+function displaySearchFieldGame() {
+
+}
+
+function displaySearchFieldFigure() {
+
+}
+
+function displaySearchFieldFilm() {
+
+}
+
+
+// Helping to create html elements and appending
 
 function appendManipulativeSection(id) {
   const div = createDiv(id);
@@ -83,25 +102,18 @@ function createInput(type, id) {
 }
 
 function createSelect(id, className, name) {
-
+  const select = document.createElement('select');
+  select.id = id;
+  select.className = className;
+  select.name = name;
+  return select;
 }
 
 function createOption() {
 
 }
 
-function displaySearchFieldComic() {
 
-}
-
-function displaySearchFieldGame() {
-
-}
-
-function displaySearchFieldFigure() {
-
-}
-
-function displaySearchFieldFilm() {
+function fillDropDown() {
 
 }
