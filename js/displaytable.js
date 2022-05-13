@@ -62,7 +62,7 @@ function createTableRowData(item) {
 
   tableRow.appendChild(createTableData(item.author));
   tableRow.appendChild(createTableData(item.series));
-  tableRow.appendChild(createTableData(item.subseries));
+  tableRow.appendChild(createTableData(item.subSeries));
   tableRow.appendChild(createTableData(item.number));
   tableRow.appendChild(createTableData(item.title));
 
