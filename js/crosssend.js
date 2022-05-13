@@ -1,6 +1,6 @@
 "use strict";
 
-const urlCrossSearch = "http://localhost/category";
+const urlCrossSearch = "http://localhost:8080/category/all";
 const formCross = document.querySelector('#formSearchCrossCategories');
 
 const inputCrossFTS = document.querySelector('#searchAllFTSInput');
@@ -14,7 +14,11 @@ const onSaleCross = document.querySelector('#searchAllOnSale');
 const boxCross = document.querySelector('#searchAllbox');
 
 formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {
-  input: inputCrossFTS.value,
+  input: inputCrossFTS.value
+}));
+
+/*
+input: inputCrossFTS.value,
   category: categorydropdrown.options[categorydropdrown.selectedIndex].value,
   time: timedropdown.options[timedropdown.selectedIndex].value,
   unavailable: unavailableCross.value,
@@ -23,4 +27,4 @@ formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSear
   hide: hideCross.value,
   onSale: onSaleCross.value,
   box: boxCross.value
-}));
+ */

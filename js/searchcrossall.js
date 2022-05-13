@@ -1,6 +1,6 @@
 async function fetchItems(url, body) {
 
-  await fetch(url, {
+  return await fetch(url, {
     method: "POST",
     headers: {"Content-type": "application/json"},
     body: JSON.stringify(body)
