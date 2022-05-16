@@ -2,8 +2,9 @@ async function showSearched(event, url, body) {
   event.preventDefault();
   emptyTable();
 
-  const list = fetchItems(url, body);
-  /*const list = [{
+ const list = await fetchItems(url, body);
+  console.log(list)
+ /* const list = [{
     type: 'comic',
     author: 'Hans Pedersen',
     title: 'The mystery of men',
@@ -17,9 +18,12 @@ async function showSearched(event, url, body) {
     series: 'How to understand humans2',
     subseries: 'M2en are from Mars and Women are From Venus',
     number: 2
+  }, {
+    type: 'figure',
+    title: 'megasaurus'
   }]
 
-   */
+  */
 
   if (!list) {
     const errorMessage = await list.text;
@@ -58,7 +62,7 @@ function createTableRowData(item) {
 
   tableRow.appendChild(createTableData(item.author));
   tableRow.appendChild(createTableData(item.series));
-  tableRow.appendChild(createTableData(item.subseries));
+  tableRow.appendChild(createTableData(item.subSeries));
   tableRow.appendChild(createTableData(item.number));
   tableRow.appendChild(createTableData(item.title));
 
