@@ -90,11 +90,3 @@
   grid-row: 3;
   place-self: center;
 }
-
-
-
-/*Display search result*/
-
-#showSearchedList:nth-child(odd) {
-  background: #ddd;
-}

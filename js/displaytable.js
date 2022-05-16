@@ -2,9 +2,9 @@ async function showSearched(event, url, body) {
   event.preventDefault();
   emptyTable();
 
- //const list = await fetchItems(url, body);
+ const list = await fetchItems(url, body);
   //console.log(list)
- const list = [{
+ /*const list = [{
     type: 'comic',
     author: 'Hans Pedersen',
     title: 'The mystery of men',
@@ -26,6 +26,8 @@ async function showSearched(event, url, body) {
    subSeries: null,
    number: null
   }]
+
+  */
 
   if (!list) {
     const errorMessage = await list.text;
