@@ -2,28 +2,30 @@ async function showSearched(event, url, body) {
   event.preventDefault();
   emptyTable();
 
- const list = await fetchItems(url, body);
-  console.log(list)
- /* const list = [{
+ //const list = await fetchItems(url, body);
+  //console.log(list)
+ const list = [{
     type: 'comic',
     author: 'Hans Pedersen',
     title: 'The mystery of men',
     series: 'How to understand humans',
-    subseries: 'Men are from Mars and Women are From Venus',
+    subSeries: 'Men are from Mars and Women are From Venus',
     number: 3
   }, {
     type: 'book',
     author: 'Hans Pedersen',
     title: 'The mystery of men2',
     series: 'How to understand humans2',
-    subseries: 'M2en are from Mars and Women are From Venus',
+    subSeries: 'M2en are from Mars and Women are From Venus',
     number: 2
   }, {
     type: 'figure',
-    title: 'megasaurus'
+   author: null,
+    title: 'megasaurus',
+   series: null,
+   subSeries: null,
+   number: null
   }]
-
-  */
 
   if (!list) {
     const errorMessage = await list.text;
@@ -33,12 +35,12 @@ async function showSearched(event, url, body) {
 }
 
 function emptyTable() {
-  document.querySelector('.table').innerHTML = '';
+  document.querySelector('#table').innerHTML = '';
 }
 
 async function displayTable(list) {
   // tag table
-  const table = document.querySelector('.table');
+  const table = document.querySelector('#table');
 
   // tilføj tabel kolonner
   const tr = createTableRow();

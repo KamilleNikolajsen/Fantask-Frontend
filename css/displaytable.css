@@ -1,0 +1,9 @@
+#table {
+  font-size: 20px;
+  border-top: #555555;
+  width: 100%;
+}
+
+#table #element {
+place-self: center;
+}

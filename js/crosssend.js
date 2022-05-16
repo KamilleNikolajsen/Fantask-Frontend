@@ -14,7 +14,7 @@ const onSaleCross = document.querySelector('#searchAllOnSale');
 const boxCross = document.querySelector('#searchAllbox');
 
 formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {
-  input: inputCrossFTS.value
+  //input: inputCrossFTS.value
 }));
 
 /*
