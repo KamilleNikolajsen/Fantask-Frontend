@@ -9,12 +9,18 @@ const timedropdown = document.querySelector('#timeDropDown');
 const unavailableCross = document.querySelector('#searchAllUnavailable');
 const outOfStockCross = document.querySelector('#searchAllOutOfStock');
 const coming = document.querySelector('#searchAllComing');
-const hideCross = document.querySelector('#searchAllHide');
+const excludeComing = document.querySelector('#searchAllExcludeComing');
 const onSaleCross = document.querySelector('#searchAllOnSale');
 const boxCross = document.querySelector('#searchAllbox');
 
 formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSearch, {
-  input: inputCrossFTS.value
+  ftsInput: inputCrossFTS.value,
+  showComing: coming.checked,
+  excludeComing: excludeComing.checked,
+  unavailable: unavailableCross.checked,
+  outOfStock: outOfStockCross.checked,
+  onSale: onSaleCross.checked,
+  box: boxCross.checked
 }));
 
 /*

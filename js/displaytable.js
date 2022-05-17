@@ -3,7 +3,7 @@ async function showSearched(event, url, body) {
   emptyTable();
 
  const list = await fetchItems(url, body);
-  //console.log(list)
+  console.log(list)
  /*const list = [{
     type: 'comic',
     author: 'Hans Pedersen',
@@ -46,7 +46,7 @@ async function displayTable(list) {
 
   // tilføj tabel kolonner
   const tr = createTableRow();
-  tr.appendChild(createTableHeader('Ikon'));
+  tr.appendChild(createTableHeader('Type'));
   tr.appendChild(createTableHeader('Forfatter'));
   tr.appendChild(createTableHeader('Serie'));
   tr.appendChild(createTableHeader('Underserie'));
