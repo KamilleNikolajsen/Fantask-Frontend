@@ -20,7 +20,8 @@ formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSear
   unavailable: unavailableCross.checked,
   outOfStock: outOfStockCross.checked,
   onSale: onSaleCross.checked,
-  box: boxCross.checked
+  box: boxCross.checked,
+  date: timedropdown.options[timedropdown.selectedIndex].value
 }));
 
 /*
