@@ -59,12 +59,17 @@
   padding-top: 20px;
   grid-column: 1/span 5;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 40%;
   grid-auto-rows: minmax(35px, auto);
 }
 
 
 @media only screen and (max-width: 1180px) {
+
+  #bools {
+    grid-template-columns: 50% 50%;
+    row-gap: 15px;
+  }
 
   /* Search field*/
   #search {
@@ -79,6 +84,7 @@
   #formSearchCrossCategories {
     font-size: 20px;
     display: grid;
+    row-gap: 15px;
     grid-template-columns: repeat(5, 1fr);
   }
 
