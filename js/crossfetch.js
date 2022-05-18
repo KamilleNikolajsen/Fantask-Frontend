@@ -23,15 +23,3 @@ formCross.addEventListener("submit", (event) => showSearched(event, urlCrossSear
   box: boxCross.checked,
   date: timedropdown.options[timedropdown.selectedIndex].value
 }));
-
-/*
-input: inputCrossFTS.value,
-  category: categorydropdrown.options[categorydropdrown.selectedIndex].value,
-  time: timedropdown.options[timedropdown.selectedIndex].value,
-  unavailable: unavailableCross.value,
-  outOfStock: outOfStockCross.value,
-  coming: coming.value,
-  hide: hideCross.value,
-  onSale: onSaleCross.value,
-  box: boxCross.value
- */
