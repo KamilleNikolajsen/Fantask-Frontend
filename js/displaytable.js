@@ -56,8 +56,10 @@ function createIcon(type) {
   }
 
   // Opret td og læg i tag med referance til fontawersome ind i
-  const td = document.createElement('td');
+  const td = document.createElement("a");
   td.appendChild(i);
+  //td.onclick = popupitem();
+  td.href = "https://www.w3schools.com";
   return td;
 }
 
@@ -68,7 +70,7 @@ function createTableData(data) {
 }
 
 function createTableHeader(name) {
-  const th = document.createElement('th');
+  const th = document.createElement('td');
   th.innerText = name;
   return th;
 }
@@ -78,5 +80,10 @@ function createTableRow() {
 }
 function emptyTable() {
   document.querySelector('#table').innerHTML = '';
+}
+
+function popupitem(){
+  window.open("https://www.w3schools.com","Popup",
+    "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 }
 

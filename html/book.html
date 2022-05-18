@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book</title>
+  <link rel="stylesheet" href="../css/generic.css">
+</head>
+<body>
+
+<div id="content">
+  <div id="popup">
+
+    <form method="get" id="formPopUpBook">
+      <p>ISBN</p>
+      <input type="text" id="ISBNInput" class="input">
+      <p>Forfatter</p>
+      <input type="text" id="authorInput" class="input">
+      <p>Serie</p>
+      <input type="text" id="seriesInput" class="input">
+      <p>Nr</p>
+      <input type="text" id="numberInput" class="input">
+      <p>Titel</p>
+      <input type="text" id="titleInput" class="input">
+      <p>Forlag</p>
+      <input type="text" id="publisherInput" class="input">
+      <p>Orginal pris</p>
+      <input type="text" id="originalPriceInput" class="input">
+      <p>U.S. pris</p>
+      <input type="text" id="usPriceInput" class="input">
+      <p>Dansk pris</p>
+      <input type="text" id="danishPriceInput" class="input">
+      <p>Memo</p>
+      <input type="text" id="memoInput" class="input">
+      <p>Type</p>
+      <input type="text" id="typeInput" class="input">
+      <p>Kategori</p>
+      <input type="text" id="categoryInput" class="input">
+      <p>Genre</p>
+      <input type="text" id="genreInput" class="input">
+
+
+      <div id="checkBox" class="grid-container">
+        <div id="backorder">
+          <input type="checkbox" id="searchAllBackorder">
+          <label for="searchAllBackorder">Restordre</label>
+        </div>
+
+        <div id="coming">
+          <input type="checkbox" id="searchAllComing">
+          <label for="searchAllComing">Kommende</label>
+        </div>
+
+        <div id="outOfStock">
+          <input type="checkbox" id="searchAllOutOfStock">
+          <label for="searchAllOutOfStock">Udsolgt</label>
+        </div>
+      </div>
+
+
+
+    </form>
+
+  </div>
+</div>
+
+
+<script src="../js/popupitem.js"></script>
+<script src="../js/bookfetch.js"></script>
+</body>
+</html>
