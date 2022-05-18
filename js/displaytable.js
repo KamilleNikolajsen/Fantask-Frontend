@@ -56,10 +56,13 @@ function createIcon(type) {
   }
 
   // Opret td og læg i tag med referance til fontawersome ind i
-  const td = document.createElement("a");
+  const td = document.createElement("Button");
   td.appendChild(i);
+  td.setAttribute("onclick", "popupitem");
+  //td.appendChild(onclick(popupitem()))
   //td.onclick = popupitem();
-  td.href = "https://www.w3schools.com";
+  //td.click(popupitem());
+  //td.href = "https://www.w3schools.com";
   return td;
 }
 

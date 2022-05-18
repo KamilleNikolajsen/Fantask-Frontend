@@ -4,8 +4,6 @@
 const urlBookFetch = "http://localhost:8080/book/{id}";
 const formPopUp = document.querySelector("#formPopUpBook");
 
-//formPopUp.addEventListener("submit", urlBookFetch);
-
 const ISBNInput = document.querySelector('#ISBNInput');
 const authorInput = document.querySelector('#authorInput');
 const seriesInput = document.querySelector('#seriesInput');
