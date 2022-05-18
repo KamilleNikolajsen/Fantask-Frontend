@@ -1,50 +1,8 @@
-async function showSearched(event, url, body) {
-  event.preventDefault();
-  emptyTable();
-
- const list = await fetchItems(url, body);
-  console.log(list)
- /*const list = [{
-    type: 'comic',
-    author: 'Hans Pedersen',
-    title: 'The mystery of men',
-    series: 'How to understand humans',
-    subSeries: 'Men are from Mars and Women are From Venus',
-    number: 3
-  }, {
-    type: 'book',
-    author: 'Hans Pedersen',
-    title: 'The mystery of men2',
-    series: 'How to understand humans2',
-    subSeries: 'M2en are from Mars and Women are From Venus',
-    number: 2
-  }, {
-    type: 'figure',
-   author: null,
-    title: 'megasaurus',
-   series: null,
-   subSeries: null,
-   number: null
-  }]
-
-  */
-
-  if (!list) {
-    const errorMessage = await list.text;
-    throw new Error(errorMessage);
-  }
-  await displayTable(list);
-}
-
-function emptyTable() {
-  document.querySelector('#table').innerHTML = '';
-}
-
 async function displayTable(list) {
   // tag table
   const table = document.querySelector('#table');
 
-  // tilføj tabel kolonner
+  // tilføj tabel kolonner til crossSearch
   const tr = createTableRow();
   tr.appendChild(createTableHeader('Type'));
   tr.appendChild(createTableHeader('Forfatter'));
@@ -58,8 +16,9 @@ async function displayTable(list) {
   list.forEach((item) => table.appendChild(createTableRowData(item)));
 }
 
+
+//Lav række for item og indsæt dets data
 function createTableRowData(item) {
-  //Lav række for item og indsæt dets data
   const tableRow = createTableRow();
 
   tableRow.appendChild(createIcon(item.type));
@@ -73,6 +32,8 @@ function createTableRowData(item) {
   return tableRow;
 }
 
+
+// Lav ikon på baggrund af type (i tag)
 function createIcon(type) {
   const i = document.createElement('i');
 
@@ -115,3 +76,7 @@ function createTableHeader(name) {
 function createTableRow() {
   return document.createElement('tr');
 }
+function emptyTable() {
+  document.querySelector('#table').innerHTML = '';
+}
+
