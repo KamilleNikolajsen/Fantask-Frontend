@@ -64,3 +64,51 @@
 }
 
 
+@media only screen and (max-width: 1180px) {
+
+  /* Search field*/
+  #search {
+    margin-top: 2%;
+    padding: 3% 2%;
+    background-color: #dadada;
+    border-radius: 2px;
+    grid-column: 2 / span 3;
+    box-shadow: 0 0 5px #344457;
+  }
+
+  #formSearchCrossCategories {
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /*Top of search field*/
+  #searchAllFTSInput {
+    grid-column: 1 / span 5;
+    place-self: center;
+  }
+
+  #categoryDropDown {
+    grid-column: 1 / span 5;
+    grid-row: 2;
+    place-self: center;
+    padding: 1%;
+  }
+
+  #timeDropDown {
+    margin: 2px 0 0 0;
+    grid-column: 1 / span 5;
+    grid-row: 3;
+    place-self: center;
+    padding: 1%;
+  }
+
+  .button {
+    grid-column: 1 / span 5;
+    grid-row: 4;
+    place-self: center;
+    padding: 1% 10%;
+  }
+
+}
+
