@@ -24,20 +24,20 @@ function createTableRowData(item) {
   //Jeg har tilføjet id her, da det skal sendes med ned i createIcon, hvis det er der eventlisteneren skal være
   //Men det kræver også at vi får lavet det så et item ideholder et id
   //Jeg har udkommenteret alt det jeg har prøvet mig med uden at det lykkes...
-  tableRow.appendChild(createIcon(item.type, item.id));
+  tableRow.appendChild(createIcon(item.type)).appendChild(createATag(item, item.type));
 
-  tableRow.appendChild(createTableData(item.author));
-  tableRow.appendChild(createTableData(item.series));
-  tableRow.appendChild(createTableData(item.subSeries));
-  tableRow.appendChild(createTableData(item.number));
-  tableRow.appendChild(createTableData(item.title));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.author));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.series));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.subSeries));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.number));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.title));
 
   return tableRow;
 }
 
 
 // Lav ikon på baggrund af type (i tag)
-function createIcon(type, id) {
+function createIcon(type) {
   const i = document.createElement('i');
 
   switch (type) {
@@ -59,12 +59,12 @@ function createIcon(type, id) {
   }
 
   // Opret td og læg i tag med referance til fontawersome ind i
-  const td = document.createElement("Button");
+  const td = document.createElement("td");
   td.appendChild(i);
 
   //Denne er hvad jeg senest har forsøgt mig med, men mangler id
-  td.addEventListener('click', showItem(id));
-  td.target = "_blank";
+  //td.addEventListener('click', showItem(id));
+  //td.target = "_blank";
 
 
   //td.setAttribute("onclick", "popupitem");
@@ -84,7 +84,7 @@ function createIcon(type, id) {
 
 function createTableData(data) {
   const tabledata = document.createElement('td');
-  tabledata.innerText = data;
+  //tabledata.innerText = data;
   return tabledata;
 }
 
@@ -101,3 +101,20 @@ function emptyTable() {
   document.querySelector('#table').innerHTML = '';
 }
 
+function createATag(item, innertext) {
+
+  //<a href="http://www.google.com"
+  // target="popup"
+  // onclick="window.open('http://www.google.com','popup','width=600,height=600'); return false;">
+  // Link Text goes here...
+  // </a>
+  const atag = document.createElement('a');
+  atag.id=item.id;
+  atag.type = item.type;
+  atag.href = item.type + ".html";
+  atag.target="popup";
+  atag.onclick= "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  atag.innerText = innertext;
+
+  return atag;
+}
