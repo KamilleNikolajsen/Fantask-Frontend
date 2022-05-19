@@ -62,12 +62,10 @@ function createIcon(item) {
   const atag = document.createElement('a');
   atag.id=item.id;
   atag.type = item.type;
-  atag.href = item.type + ".html";
+  atag.href = item.type + ".html?id=" + item.id;
   atag.target="popup";
-  atag.onclick= function () {
-    showItem(item.id);
-    "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
-  }
+  atag.onclick = "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+
 
   // Opret td og læg atag ind i som har i tag i sig med class til fontawesome
   const td = document.createElement("td");
@@ -117,14 +115,10 @@ function createATag(item, innertext) {
   const atag = document.createElement('a');
   atag.id=item.id;
   atag.type = item.type;
-  atag.href = item.type + ".html";
+  atag.href = item.type + ".html?id=" + item.id;
   atag.target="popup";
   atag.onclick= "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
   atag.innerText = innertext;
 
   return atag;
-}
-
-function createIconATag(item) {
-
 }

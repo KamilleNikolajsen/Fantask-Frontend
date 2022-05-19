@@ -30,8 +30,7 @@ const saveBook = document.querySelector('#dateBook');
 const cancelBook = document.querySelector('#dateBook');
 
 
-async function showItem(id, event) {
-  event.preventDefault();
+async function showItem(id) {
   const book = await fetchItemById(id);
   console.log(book);
 
@@ -43,3 +42,8 @@ async function showItem(id, event) {
 
 }
 
+showItem(function () {
+  const string = window.location.search;
+  const urlParam = new URLSearchParams(string);
+  return urlParam.get('id');
+}()).catch(error => alert(error));
