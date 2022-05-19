@@ -56,9 +56,9 @@ function createIcon(type) {
   }
 
   // Opret td og læg i tag med referance til fontawersome ind i
-  const td = document.createElement("Button");
+  const td = document.createElement("td");
   td.appendChild(i);
-  td.setAttribute("onclick", "popupitem");
+  //td.setAttribute("onclick", "popupitem");
   //td.appendChild(onclick(popupitem()))
   //td.onclick = popupitem();
   //td.click(popupitem());
