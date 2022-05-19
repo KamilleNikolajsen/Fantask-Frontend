@@ -1,16 +1,19 @@
 "use strict";
 
-//Lav rigtig url
-const urlBookFetch = "http://localhost:8080/book/{id}";
 const formPopUp = document.querySelector("#formPopUpBook");
-const url = "http://localhost:8080/?category=/?id=";
+const url = "http://localhost:8080/book/?id=";
 
-async function fetchItem(category, id) {
-  return await fetch(url + category + id).then(response => response.json()).catch(reason => alert(reason));
+async function fetchItem(id) {
+  return await fetch(url + id).then(response => response.json()).catch(reason => alert(reason));
 }
 
-async function showItem(event) {
+async function showItem(id, event) {
   event.preventDefault();
-  formPopUp = await fetchItem()
+  const book = await fetchItem(id);
+  console.log(book);
+
+  formPopUp.setAttribute("forfatter", book.authors.authorName);
+  formPopUp.setAttribute("serie", book.bookSeries.bookSeriesName);
+  formPopUp.setAttribute("forlag", book.publisher.publisherName);
 }
 

@@ -21,7 +21,10 @@ async function displayTable(list) {
 function createTableRowData(item) {
   const tableRow = createTableRow();
 
-  tableRow.appendChild(createIcon(item.type));
+  //Jeg har tilføjet id her, da det skal sendes med ned i createIcon, hvis det er der eventlisteneren skal være
+  //Men det kræver også at vi får lavet det så et item ideholder et id
+  //Jeg har udkommenteret alt det jeg har prøvet mig med uden at det lykkes...
+  tableRow.appendChild(createIcon(item.type, item.id));
 
   tableRow.appendChild(createTableData(item.author));
   tableRow.appendChild(createTableData(item.series));
@@ -34,7 +37,7 @@ function createTableRowData(item) {
 
 
 // Lav ikon på baggrund af type (i tag)
-function createIcon(type) {
+function createIcon(type, id) {
   const i = document.createElement('i');
 
   switch (type) {
@@ -56,13 +59,26 @@ function createIcon(type) {
   }
 
   // Opret td og læg i tag med referance til fontawersome ind i
-  const td = document.createElement("td");
+  const td = document.createElement("Button");
   td.appendChild(i);
+
+  //Denne er hvad jeg senest har forsøgt mig med, men mangler id
+  td.addEventListener('click', showItem(id));
+  td.target = "_blank";
+
+
   //td.setAttribute("onclick", "popupitem");
   //td.appendChild(onclick(popupitem()))
-  //td.onclick = popupitem();
-  //td.click(popupitem());
   //td.href = "https://www.w3schools.com";
+  //td.target = "popup";
+  //td.onclick = window.open("https://www.w3schools.com","popup",
+    //"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400"); return false;
+  //td.click(popupitem());
+  //th.href = showItem()
+  //td.href = "https://www.w3schools.com";
+  //td.href = "http://localhost:8080/book/1";
+  //td.onclick = window.open("https://www.w3schools.com", Popup,
+    //"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
   return td;
 }
 
@@ -83,10 +99,5 @@ function createTableRow() {
 }
 function emptyTable() {
   document.querySelector('#table').innerHTML = '';
-}
-
-function popupitem(){
-  window.open("https://www.w3schools.com","Popup",
-    "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 }
 
