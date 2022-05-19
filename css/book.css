@@ -1,0 +1,19 @@
+#content {
+  padding: 1%;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-auto-rows: minmax(100%, auto);
+}
+
+#popup {
+  grid-column: 1 /2;
+  border-radius: 5px;
+}
+
+#formPopUpBook {
+  padding: 2% 5%;
+}
+
+#ISBNInputBook {
+  text-align: center;
+}

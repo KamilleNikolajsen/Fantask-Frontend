@@ -31,3 +31,8 @@
   color: white;
   box-shadow: 0 0 10px;
 }
+
+.formHeaderOnSelectedItem {
+  text-align: center;
+  background-color: rgba(114, 170, 215, 0.73);
+}
