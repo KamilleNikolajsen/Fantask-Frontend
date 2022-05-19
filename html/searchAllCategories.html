@@ -36,39 +36,42 @@
 
       <input type="submit" value="Søg" class="button">
 
-      <div id="manipulateSection"></div>
-
-      <div id="bools" class="grid-container">
+      <div id="bools_boxe1">
         <div id="unavailable">
           <input type="checkbox" id="searchAllUnavailable" checked>
           <label for="searchAllUnavailable">Ekskluder udgåede</label>
         </div>
+        <div id="excludecoming">
+          <input type="checkbox" id="searchAllExcludeComing" checked>
+          <label for="searchAllExcludeComing">Ekskluder kommende</label>
+        </div>
+        <div id="outOfStock">
+          <input type="checkbox" id="searchAllOutOfStock" checked>
+          <label for="searchAllOutOfStock">Ekskluder udsolgte</label>
+        </div>
+      </div>
 
+      <div id="bools_boxe2">
         <div id="onSale">
           <input type="checkbox" id="searchAllOnSale">
           <label for="searchAllOnSale">Vis kun Tilbud</label>
         </div>
 
-        <div id="excludecoming">
-          <input type="checkbox" id="searchAllExcludeComing" checked>
-          <label for="searchAllExcludeComing">Ekskluder kommende</label>
-        </div>
 
         <div id="coming">
           <input type="checkbox" id="searchAllComing">
           <label for="searchAllComing">Vis kun kommende</label>
         </div>
 
-        <div id="outOfStock">
-          <input type="checkbox" id="searchAllOutOfStock" checked>
-          <label for="searchAllOutOfStock">Ekskluder udsolgte</label>
-        </div>
 
         <div id="box">
           <input type="checkbox" id="searchAllbox">
           <label for="searchAllbox">Vis kun boxed</label>
         </div>
       </div>
+
+      <div id="manipulateSection"></div>
+
 
     </form>
 
