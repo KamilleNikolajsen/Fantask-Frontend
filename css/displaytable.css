@@ -11,6 +11,10 @@
   background-color: white;
 }
 
+#table tr:nth-child(even) {
+  background-color: rgba(224, 238, 253, 0.54);
+}
+
 #table, td, th {
   border: 1px solid;
   text-align: center;
@@ -20,6 +24,6 @@
 #table {
   border-collapse: collapse;
   font-size: 20px;
-  background-color: rgba(224, 238, 253, 0.54);
+
   width: 100%;
 }
