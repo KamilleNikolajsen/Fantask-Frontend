@@ -24,7 +24,7 @@ function createTableRowData(item) {
   //Jeg har tilføjet id her, da det skal sendes med ned i createIcon, hvis det er der eventlisteneren skal være
   //Men det kræver også at vi får lavet det så et item ideholder et id
   //Jeg har udkommenteret alt det jeg har prøvet mig med uden at det lykkes...
-  tableRow.appendChild(createIcon(item.type)).appendChild(createATag(item, item.type));
+  const icon = tableRow.appendChild(createIcon(item));
 
   tableRow.appendChild(createTableData()).appendChild(createATag(item, item.author));
   tableRow.appendChild(createTableData()).appendChild(createATag(item, item.series));
@@ -37,10 +37,10 @@ function createTableRowData(item) {
 
 
 // Lav ikon på baggrund af type (i tag)
-function createIcon(type) {
+function createIcon(item) {
   const i = document.createElement('i');
 
-  switch (type) {
+  switch (item.type) {
     case 'book':
       i.className = 'fa-solid fa-book';
       break;
@@ -58,9 +58,21 @@ function createIcon(type) {
       break;
   }
 
-  // Opret td og læg i tag med referance til fontawersome ind i
+  // Lav a tag til rundt om icon
+  const atag = document.createElement('a');
+  atag.id=item.id;
+  atag.type = item.type;
+  atag.href = item.type + ".html";
+  atag.target="popup";
+  atag.onclick= function () {
+    showItem(item.id);
+    "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  }
+
+  // Opret td og læg atag ind i som har i tag i sig med class til fontawesome
   const td = document.createElement("td");
-  td.appendChild(i);
+  atag.appendChild(i);
+  td.appendChild(atag);
 
   //Denne er hvad jeg senest har forsøgt mig med, men mangler id
   //td.addEventListener('click', showItem(id));
@@ -102,12 +114,6 @@ function emptyTable() {
 }
 
 function createATag(item, innertext) {
-
-  //<a href="http://www.google.com"
-  // target="popup"
-  // onclick="window.open('http://www.google.com','popup','width=600,height=600'); return false;">
-  // Link Text goes here...
-  // </a>
   const atag = document.createElement('a');
   atag.id=item.id;
   atag.type = item.type;
@@ -117,4 +123,8 @@ function createATag(item, innertext) {
   atag.innerText = innertext;
 
   return atag;
+}
+
+function createIconATag(item) {
+
 }

@@ -11,53 +11,86 @@
   <div id="popup">
 
     <form method="get" id="formPopUpBook">
-      <p>ISBN</p>
-      <input type="text" id="ISBNInput" class="input">
-      <p>Forfatter</p>
-      <input type="text" id="authorInput" class="input">
-      <p>Serie</p>
-      <input type="text" id="seriesInput" class="input">
-      <p>Nr</p>
-      <input type="text" id="numberInput" class="input">
-      <p>Titel</p>
-      <input type="text" id="titleInput" class="input">
-      <p>Forlag</p>
-      <input type="text" id="publisherInput" class="input">
-      <p>Orginal pris</p>
-      <input type="text" id="originalPriceInput" class="input">
-      <p>U.S. pris</p>
-      <input type="text" id="usPriceInput" class="input">
-      <p>Dansk pris</p>
+      <label for="ISBNInputBook">ISBN:</label>
+      <input type="text" id="ISBNInputBook" class="input">
+
+      <label for="authorDropDownBook">Forfatter:</label>
+      <select id="authorDropDownBook" name="authorDropDown" class="dropdown"></select>
+
+      <label for="seriesDropDownBook">Serie:</label>
+      <select id="seriesDropDownBook" class="dropdown" name="seriesDropDown"></select>
+
+      <label for="numberInputBook">Nr:</label>
+      <input type="text" id="numberInputBook" class="input">
+
+      <label for="titleInputBook">Titel:</label>
+      <input type="text" id="titleInputBook" class="input">
+
+      <label for="publisherDropDownBook">Forlag</label>
+      <select id="publisherDropDownBook" name="publisherDropDownBook" class="dropdown"></select>
+
+      <label for="originalPriceInputBook">Oprindelig pris:</label>
+      <input type="text" id="originalPriceInputBook" class="input">
+
+      <label for="usPriceInputBook">U.S. pris:</label>
+      <input type="text" id="usPriceInputBook" class="input">
+
+      <label for="danishPriceInput">Dansk pris:</label>
       <input type="text" id="danishPriceInput" class="input">
-      <p>Memo</p>
-      <input type="text" id="memoInput" class="input">
-      <p>Type</p>
-      <input type="text" id="typeInput" class="input">
-      <p>Kategori</p>
-      <input type="text" id="categoryInput" class="input">
-      <p>Genre</p>
-      <input type="text" id="genreInput" class="input">
+
+      <label for="memoInputBook">Memo:</label>
+      <input type="text" id="memoInputBook" class="input">
+
+      <label for="typeDropDownBook">Type:</label>
+      <select id="typeDropDownBook" class="dropdown" name="typeDropDownBook"></select>
+
+      <label for="categoryDropDownBook">Kategori:</label>
+      <select id="categoryDropDownBook" class="dropdown" name="categoryDropDownBook"></select>
+
+      <label for="genreDropDownBook">Genre:</label>
+      <select id="genreDropDownBook" class="dropdown" name="genreDropDownBook"></select>
 
 
-      <div id="checkBox" class="grid-container">
+      <div id="checkBoxBook">
+
+        <div id="outOfStock">
+          <input type="checkbox" id="outOfStockBook">
+          <label for="outOfStockBook">Udsolgt</label>
+        </div>
+
+        <div id="unavailable">
+          <input type="checkbox" id="unavailableBook">
+          <label for="unavailableBook">Udgået</label>
+        </div>
+
+        <div id="subscription">
+          <input type="checkbox" id="subscriptionBook">
+          <label for="subscriptionBook">Abokørsel</label>
+        </div>
+
         <div id="backorder">
-          <input type="checkbox" id="searchAllBackorder">
-          <label for="searchAllBackorder">Restordre</label>
+          <input type="checkbox" id="backorderBook">
+          <label for="backorderBook">Restordre</label>
         </div>
 
         <div id="coming">
-          <input type="checkbox" id="searchAllComing">
-          <label for="searchAllComing">Kommende</label>
+          <input type="checkbox" id="comingBook">
+          <label for="comingBook">Kommende</label>
         </div>
 
-        <div id="outOfStock">
-          <input type="checkbox" id="searchAllOutOfStock">
-          <label for="searchAllOutOfStock">Udsolgt</label>
+        <div id="hide">
+          <input type="checkbox" id="hideBook">
+          <label for="hideBook">Skjul</label>
         </div>
+
       </div>
 
+      <label for="dateBook">Dato:</label>
+      <p id="dateBook"></p>
 
-
+      <button id="showCoverButtonBook" type="button">Vis Cover</button>
+      <button id="saveBook" type="button">Gem og luk</button>
+      <button id="cancelBook" type="button">Annullér</button>
     </form>
 
   </div>
