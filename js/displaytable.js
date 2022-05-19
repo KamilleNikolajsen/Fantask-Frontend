@@ -101,7 +101,7 @@ function createTableData(data) {
 }
 
 function createTableHeader(name) {
-  const th = document.createElement('td');
+  const th = document.createElement('th');
   th.innerText = name;
   return th;
 }
