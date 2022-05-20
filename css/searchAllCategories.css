@@ -33,7 +33,6 @@
 #categoryDropDown {
   /*grid-column: 3 /span 1;*/
   /*place-self: center;*/
-  width: 50%;
 }
 
 #timeDropDown {
@@ -55,6 +54,7 @@
   display: grid;
   row-gap: 10%;
   grid-template-columns: auto;
+  min-width: 200px;
 }
 
 #bools_boxe1 div, #bools_boxe2 div {
@@ -66,6 +66,30 @@
 
   #search {
     grid-column: 1 / span 5;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  #search {
+    grid-column: 1 / span 5;
+    height: 500px;
+  }
+
+  #formSearchCrossCategories {
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 6%;
+    row-gap: 13%;
+    justify-content: center;
+  }
+
+  #bools_boxe1, #bools_boxe2 {
+    display: grid;
+    row-gap: 10%;
+    grid-template-columns: auto;
   }
 
 }
