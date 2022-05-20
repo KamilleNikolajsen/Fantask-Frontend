@@ -70,7 +70,7 @@
 
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
 
   #search {
     grid-column: 1 / span 5;
@@ -92,5 +92,5 @@
     grid-template-columns: auto;
   }
 
-}
+}*/
 
