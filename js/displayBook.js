@@ -1,7 +1,7 @@
 "use strict";
 
 const formPopUp = document.querySelector("#formPopUpBook");
-const url = "http://localhost:8080/book/";
+const bookUrl = "http://localhost:8080/book/";
 
 
 // Indhold i bog
@@ -47,32 +47,40 @@ async function showItem(id) {
 
   //authorBook
   //seriesBook
+  const listSer = await fetchList(bookUrl + "series");
+  seriesBook.appendChild(createOption('nullSeries', "Vis alle"));
+  listSer.forEach(element => seriesBook.appendChild(createOption(element.bookSeriesId, element.bookSeriesName)));
+  if (book.bookSeries != null) {
+    const element = document.getElementById(book.bookSeries.bookSeriesName);
+    element.selected = true;
+  }
 
   //publisherBook
-  const listPub = await fetchList(url + "publisher");
-  publisherBook.appendChild(createOption('null', "Vis alle"));
+  const listPub = await fetchList(bookUrl + "publisher");
+  publisherBook.appendChild(createOption('nullPub', "Vis alle"));
   listPub.forEach(element => publisherBook.appendChild(createOption(element.publisherId, element.publisherName)));
   if (book.publisher != null) {
     const element = document.getElementById(book.publisher.publisherName);
     element.selected = true;
-  } else {
-    const noneSelected = document.getElementById('null');
-    noneSelected.selected = true;
   }
 
   //typeBook
   //categoryBook
+  const listCat = await fetchList(bookUrl + "categories");
+  categoryBook.appendChild(createOption('nullCat', "Vis alle"));
+  listCat.forEach(element => categoryBook.appendChild(createOption(element.bookCategoryId, element.categoryName)));
+  if (book.bookCategory != null) {
+    const element = document.getElementById(book.bookCategory.categoryName);
+    element.selected = true;
+  }
 
   //genreBook
-  const listGenre = await fetchList(url + "genre");
-  genreBook.appendChild(createOption('null', "Vis alle"));
+  const listGenre = await fetchList(bookUrl + "genre");
+  genreBook.appendChild(createOption('nullGen', "Vis alle"));
   listGenre.forEach(element => genreBook.appendChild(createOption(element.bookGenreId, element.bookGenreName)));
   if (book.bookGenre != null) {
     const element = document.getElementById(book.bookGenre.bookGenreName);
     element.selected = true;
-  } else {
-    const noneSelected = document.getElementById('null');
-    noneSelected.selected = true;
   }
 
 
