@@ -6,7 +6,7 @@ const bookUrl = "http://localhost:8080/book/";
 
 // Indhold i bog
 const isbnBook = document.querySelector('#ISBNInputBook');
-const authorBook = document.querySelector('#authorDropDownBook');
+const authorBook = document.querySelector('#authorList');
 const seriesBook = document.querySelector('#seriesDropDownBook');
 const numberBook = document.querySelector('#numberInputBook');
 const titleBook = document.querySelector('#titleInputBook');
@@ -46,6 +46,9 @@ async function showItem(id) {
   // Dropdowns
 
   //authorBook
+  //const listAut = await fetchList(bookUrl + "authors/" + book.bookId);
+  //listAut.forEach(author => authorBook.appendChild(document.createElement('p').innerText = author.authorName));
+
   //seriesBook
   const listSer = await fetchList(bookUrl + "series");
   seriesBook.appendChild(createOption('nullSeries', "Vis alle"));
