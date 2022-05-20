@@ -46,8 +46,11 @@ async function showItem(id) {
   // Dropdowns
 
   //authorBook
-  //const listAut = await fetchList(bookUrl + "authors/" + book.bookId);
-  //listAut.forEach(author => authorBook.appendChild(document.createElement('p').innerText = author.authorName));
+  book.authors.forEach(author => {
+    const ptag = document.createElement('p');
+    ptag.innerText = author.authorName;
+    authorBook.appendChild(ptag);
+  });
 
   //seriesBook
   const listSer = await fetchList(bookUrl + "series");
@@ -68,6 +71,14 @@ async function showItem(id) {
   }
 
   //typeBook
+  const types = await fetchList(bookUrl + "types");
+  typeBook.appendChild(createOption('nullType', 'Vis alle'));
+  types.forEach(type => typeBook.appendChild(createOption(type, type)));
+  if (book.type != null) {
+    const element = document.getElementById(book.type);
+    element.selected = true;
+  }
+
   //categoryBook
   const listCat = await fetchList(bookUrl + "categories");
   categoryBook.appendChild(createOption('nullCat', "Vis alle"));
