@@ -109,8 +109,27 @@ async function showItem(id) {
 
   //Date
 
-  // formater til dnask dato og kun dato
-  dateBook.innerText = book.date;
+  // formater til dato
+  function format(inputDate) {
+    let date, month, year;
+
+    date = inputDate.getDate();
+    month = inputDate.getMonth() + 1;
+    year = inputDate.getFullYear();
+
+    date = date
+      .toString()
+      .padStart(2, '0');
+
+    month = month
+      .toString()
+      .padStart(2, '0');
+
+    return `${date}-${month}-${year}`;
+  }
+
+  dateBook.innerText = format(new Date(book.date.split("T")[0]));
+
 }
 
 function createOption(id, name) {
@@ -135,11 +154,12 @@ function getId() {
 }
 
 //cancel
-function cancel(){
-  if(confirm("Er du sikker på du vil lukke uden at gemme?")){
+function cancel() {
+  if (confirm("Er du sikker på du vil lukke uden at gemme?")) {
     window.close();
   }
 }
+
 cancelBook.addEventListener('click', cancel);
 
 
@@ -156,4 +176,5 @@ async function save() {
   await fetchItems("/book/{id}", body);
 
 }
+
 saveBook.addEventListener('click', save);
