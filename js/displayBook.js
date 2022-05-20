@@ -11,7 +11,6 @@ const seriesBook = document.querySelector('#seriesDropDownBook');
 const numberBook = document.querySelector('#numberInputBook');
 const titleBook = document.querySelector('#titleInputBook');
 const publisherBook = document.querySelector('#publisherDropDownBook');
-const originalPriceBook = document.querySelector('#originalPriceInputBook');
 const usPriceBook = document.querySelector('#usPriceInputBook');
 const danishBook = document.querySelector('#danishPriceInput');
 const memoBook = document.querySelector('#memoInputBook');
@@ -23,6 +22,7 @@ const unavailableBook = document.querySelector('#unavailableBook');
 const subscriptionBook = document.querySelector('#subscriptionBook');
 const backorderBook = document.querySelector('#backorderBook');
 const comingBook = document.querySelector('#comingBook');
+const onSaleBook = document.querySelector('#onSaleBook');
 const hideBook = document.querySelector('#hideBook');
 const dateBook = document.querySelector('#dateBook');
 const coverBook = document.querySelector('#dateBook');
@@ -34,12 +34,41 @@ async function showItem(id) {
   const book = await fetchItemById(id);
   console.log(book);
 
- // formPopUp.setAttribute("forfatter", book.authors.authorName);
- // formPopUp.setAttribute("serie", book.bookSeries.bookSeriesName);
-  // formPopUp.setAttribute("forlag", book.publisher.publisherName);
-
-
-
+  isbnBook.value = book.isbn;
+  //authorBook
+  //seriesBook
+  numberBook.value = book.number;
+  titleBook.value = book.title;
+  //publisherBook
+  usPriceBook.value = book.originalPrice;
+  danishBook.value = book.danishPrice;
+  memoBook.value = book.description;
+  //typeBook
+  //categoryBook
+  //genreBook
+  if (book.outOfStock === true) {
+    outOfStockBook.checked = true;
+  }
+  if (book.unavailable === true) {
+    unavailableBook.checked = true;
+  }
+  if (book.subscription === true) {
+    subscriptionBook.checked = true;
+  }
+  if (book.backorder === true) {
+    backorderBook.checked = true;
+  }
+  if (book.coming === true) {
+    comingBook.checked = true;
+  }
+  if (book.onSale === true) {
+    onSaleBook.checked = true;
+  }
+  if (book.hide === true) {
+    hideBook.checked = true;
+  }
+  // formater til dnask dato og kun dato
+  dateBook.innerText = book.date;
 }
 
 showItem(function () {
@@ -47,8 +76,6 @@ showItem(function () {
   const urlParam = new URLSearchParams(string);
   return urlParam.get('id');
 }()).catch(error => alert(error));
-
-
 
 
 //cancel
