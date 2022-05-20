@@ -26,8 +26,8 @@ const comingBook = document.querySelector('#comingBook');
 const hideBook = document.querySelector('#hideBook');
 const dateBook = document.querySelector('#dateBook');
 const coverBook = document.querySelector('#dateBook');
-const saveBook = document.querySelector('#dateBook');
-const cancelBook = document.querySelector('#dateBook');
+const saveBook = document.querySelector('#saveBook');
+const cancelBook = document.querySelector('#cancelBook');
 
 
 async function showItem(id) {
@@ -42,13 +42,102 @@ async function showItem(id) {
 
 }
 
-showItem(function () {
+showItem(getId()).catch(error => alert(error));
+
+function getId() {
   const string = window.location.search;
   const urlParam = new URLSearchParams(string);
   return urlParam.get('id');
-}()).catch(error => alert(error));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 //cancel
+function cancel(){
+  if(confirm("Er du sikker på du vil lukke uden at gemme?")){
+    window.close();
+  }
+}
+cancelBook.addEventListener('click', cancel);
+
+
+//Skal lige tjekkes når backend virker
+async function save() {
+  const book = await fetchItemById(getId());
+
+  const body = {
+    method: "POST",
+    headers: {"Content-type": "application/json"},
+    body: JSON.stringify(book)
+  }.then((resonse) => resonse.json()).catch((reason) => alert(reason));
+
+  await fetchItems("/book/{id}", body);
+
+}
+saveBook.addEventListener('click', save);
