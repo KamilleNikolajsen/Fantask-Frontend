@@ -34,37 +34,49 @@ async function showItem(id) {
   const book = await fetchItemById(id);
   console.log(book);
 
+  // input get value
   isbnBook.value = book.isbn;
-  //await fetchList(url+"author");
-  //authorBook
-  //seriesBook
   numberBook.value = book.number;
   titleBook.value = book.title;
+  usPriceBook.value = book.originalPrice;
+  danishBook.value = book.danishPrice;
+  memoBook.value = book.description;
+
+
+  // Dropdowns
+
+  //authorBook
+  //seriesBook
 
   //publisherBook
   const listPub = await fetchList(url + "publisher");
   publisherBook.appendChild(createOption('null', "Vis alle"));
   listPub.forEach(element => publisherBook.appendChild(createOption(element.publisherId, element.publisherName)));
-  /*if (book.publisher != null) {
-    const element = document.getElementById(book.publisherName);
+  if (book.publisher != null) {
+    const element = document.getElementById(book.publisher.publisherName);
     element.selected = true;
   } else {
     const noneSelected = document.getElementById('null');
     noneSelected.selected = true;
   }
 
-   */
-
-  usPriceBook.value = book.originalPrice;
-  danishBook.value = book.danishPrice;
-  memoBook.value = book.description;
   //typeBook
   //categoryBook
 
   //genreBook
   const listGenre = await fetchList(url + "genre");
-  listPub.forEach(element => genreBook.appendChild(createOption(element.bookGenreId, element.bookGenreName)));
+  genreBook.appendChild(createOption('null', "Vis alle"));
+  listGenre.forEach(element => genreBook.appendChild(createOption(element.bookGenreId, element.bookGenreName)));
+  if (book.bookGenre != null) {
+    const element = document.getElementById(book.bookGenre.bookGenreName);
+    element.selected = true;
+  } else {
+    const noneSelected = document.getElementById('null');
+    noneSelected.selected = true;
+  }
 
+
+// checkboxes
   if (book.outOfStock === true) {
     outOfStockBook.checked = true;
   }
@@ -86,6 +98,9 @@ async function showItem(id) {
   if (book.hide === true) {
     hideBook.checked = true;
   }
+
+  //Date
+
   // formater til dnask dato og kun dato
   dateBook.innerText = book.date;
 }
