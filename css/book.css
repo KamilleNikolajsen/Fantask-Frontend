@@ -7,12 +7,10 @@
 
 #popup {
   grid-column: 2;
-
-/*  margin-top: 2%;
-  padding: 3% 2%;*/
   background-color: #dadada;
   border-radius: 2px;
   box-shadow: 0 0 5px #344457;
+/*  padding: 2% 5%;*/
 }
 
 #popup h3{
@@ -22,7 +20,8 @@
 }
 
 #formPopUpBook {
-  padding: 2% 5%;
+  margin: 20px;
+  font-size: 20px;
 }
 
 #ISBNInputBook {
@@ -37,6 +36,18 @@
   row-gap: 15px;
   column-gap: 50px;
   justify-content: center;
+}
+
+#checkBoxBook{
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#saveBook{
+  grid-column: 1/span 2;
+  height: 60px;
+  font-size: 20px;
 }
 
 
