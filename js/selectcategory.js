@@ -55,7 +55,6 @@ async function displaySearchFieldBook() {
 }
 
 
-
 function displaySearchFieldComic() {
 
 }
@@ -115,5 +114,4 @@ function createOption() {
 
 
 function fillDropDown() {
-
 }

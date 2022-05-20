@@ -35,17 +35,36 @@ async function showItem(id) {
   console.log(book);
 
   isbnBook.value = book.isbn;
+  //await fetchList(url+"author");
   //authorBook
   //seriesBook
   numberBook.value = book.number;
   titleBook.value = book.title;
+
   //publisherBook
+  const listPub = await fetchList(url + "publisher");
+  publisherBook.appendChild(createOption('null', "Vis alle"));
+  listPub.forEach(element => publisherBook.appendChild(createOption(element.publisherId, element.publisherName)));
+  /*if (book.publisher != null) {
+    const element = document.getElementById(book.publisherName);
+    element.selected = true;
+  } else {
+    const noneSelected = document.getElementById('null');
+    noneSelected.selected = true;
+  }
+
+   */
+
   usPriceBook.value = book.originalPrice;
   danishBook.value = book.danishPrice;
   memoBook.value = book.description;
   //typeBook
   //categoryBook
+
   //genreBook
+  const listGenre = await fetchList(url + "genre");
+  listPub.forEach(element => genreBook.appendChild(createOption(element.bookGenreId, element.bookGenreName)));
+
   if (book.outOfStock === true) {
     outOfStockBook.checked = true;
   }
@@ -69,6 +88,18 @@ async function showItem(id) {
   }
   // formater til dnask dato og kun dato
   dateBook.innerText = book.date;
+}
+
+function createOption(id, name) {
+  const option = document.createElement('option');
+  option.value = id;
+  option.id = name;
+  option.textContent = name;
+  return option;
+}
+
+async function fetchList(dropDownUrl) {
+  return await fetch(dropDownUrl).then(response => response.json()).catch(reason => alert(reason));
 }
 
 showItem(function () {
