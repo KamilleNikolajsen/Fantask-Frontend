@@ -5,6 +5,10 @@
   grid-auto-rows: minmax(100%, auto);
 }
 
+#showSearchedList a{
+  cursor: pointer;
+}
+
 .fa-square-xmark {
   color: #c21818;
   width: 4%;

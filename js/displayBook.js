@@ -4,33 +4,33 @@ const formPopUp = document.querySelector("#formPopUpBook");
 const bookUrl = "http://localhost:8080/book/";
 
 
-// Indhold i bog
-const isbnBook = document.querySelector('#ISBNInputBook');
-const authorBook = document.querySelector('#authorList');
-const seriesBook = document.querySelector('#seriesDropDownBook');
-const numberBook = document.querySelector('#numberInputBook');
-const titleBook = document.querySelector('#titleInputBook');
-const publisherBook = document.querySelector('#publisherDropDownBook');
-const usPriceBook = document.querySelector('#usPriceInputBook');
-const danishBook = document.querySelector('#danishPriceInput');
-const memoBook = document.querySelector('#memoInputBook');
-const typeBook = document.querySelector('#typeDropDownBook');
-const categoryBook = document.querySelector('#categoryDropDownBook');
-const genreBook = document.querySelector('#genreDropDownBook');
-const outOfStockBook = document.querySelector('#outOfStockBook');
-const unavailableBook = document.querySelector('#unavailableBook');
-const subscriptionBook = document.querySelector('#subscriptionBook');
-const backorderBook = document.querySelector('#backorderBook');
-const comingBook = document.querySelector('#comingBook');
-const onSaleBook = document.querySelector('#onSaleBook');
-const hideBook = document.querySelector('#hideBook');
-const dateBook = document.querySelector('#dateBook');
-const coverBook = document.querySelector('#dateBook');
-const saveBook = document.querySelector('#saveBook');
-const cancelBook = document.querySelector('#cancelBook');
-
-
 async function showItem(id) {
+  // Indhold i bog
+  const isbnBook = document.querySelector('#ISBNInputBook');
+  const authorBook = document.querySelector('#authorList');
+  const seriesBook = document.querySelector('#seriesDropDownBook');
+  const numberBook = document.querySelector('#numberInputBook');
+  const titleBook = document.querySelector('#titleInputBook');
+  const publisherBook = document.querySelector('#publisherDropDownBook');
+  const usPriceBook = document.querySelector('#usPriceInputBook');
+  const danishBook = document.querySelector('#danishPriceInput');
+  const memoBook = document.querySelector('#memoInputBook');
+  const typeBook = document.querySelector('#typeDropDownBook');
+  const categoryBook = document.querySelector('#categoryDropDownBook');
+  const genreBook = document.querySelector('#genreDropDownBook');
+  const outOfStockBook = document.querySelector('#outOfStockBook');
+  const unavailableBook = document.querySelector('#unavailableBook');
+  const subscriptionBook = document.querySelector('#subscriptionBook');
+  const backorderBook = document.querySelector('#backorderBook');
+  const comingBook = document.querySelector('#comingBook');
+  const onSaleBook = document.querySelector('#onSaleBook');
+  const hideBook = document.querySelector('#hideBook');
+  const dateBook = document.querySelector('#dateBook');
+  const coverBook = document.querySelector('#dateBook');
+  const saveBook = document.querySelector('#saveBook');
+  const cancelBook = document.querySelector('#cancelBook');
+
+
   const book = await fetchItemById(id);
   console.log(book);
 
@@ -159,7 +159,7 @@ async function fetchList(dropDownUrl) {
 }
 
 
-showItem(getId()).catch(error => alert(error));
+//showItem(getId()).catch(error => alert(error));
 
 function getId() {
   const string = window.location.search;
@@ -167,14 +167,15 @@ function getId() {
   return urlParam.get('id');
 }
 
+//Logik ligger i popup.js
 //cancel
-function cancel() {
+/*function cancel() {
   if (confirm("Er du sikker på du vil lukke uden at gemme?")) {
     window.close();
   }
-}
+}*/
 
-cancelBook.addEventListener('click', cancel);
+//cancelBook.addEventListener('click', cancel);
 
 
 //Skal lige tjekkes når backend virker
@@ -191,4 +192,4 @@ async function save() {
 
 }
 
-saveBook.addEventListener('click', save);
+//saveBook.addEventListener('click', save);

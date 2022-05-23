@@ -6,8 +6,11 @@
   <link rel="stylesheet" href="../css/generic.css">
   <link rel="stylesheet" href="../css/searchAllCategories.css">
   <link rel="stylesheet" href="../css/displaytable.css">
+  <link rel="stylesheet" href="../css/popup.css">
 
   <script src="https://kit.fontawesome.com/bced513090.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 <div id="content">
@@ -85,12 +88,26 @@
       </table>
     </div>
   </div>
+
+
+  <div class='overlayPopup'>
+    <div class='popup'>
+      <div class='closePopup fa-solid fa-square-xmark fa-xl'></div>
+      <h3 class="formHeaderOnSelectedItem">Indskriv/Redigér bog:</h3>
+      <!-- popup content -->
+    </div>
+  </div>
+
 </div>
 
 
 <script src="../js/fetchpost.js"></script>
+<script src="../js/fetchItemById.js"></script>
 <script src="../js/showsearch.js"></script>
 <script src="../js/displaytable.js"></script>
 <script src="../js/crossform.js"></script>
+<script src="../js/selectcategory.js"></script>
+<script src="../js/popup.js"></script>
+<script src="../js/displayBook.js"></script>
 </body>
 </html>
