@@ -5,6 +5,11 @@
   grid-auto-rows: minmax(100%, auto);
 }
 
+.fa-square-xmark {
+  color: #c21818;
+  width: 4%;
+}
+
 /* Search field*/
 #search {
   margin-top: 2%;
@@ -19,15 +24,15 @@
   font-size: 20px;
   display: grid;
 
-  grid-template-columns: 35% 15% 15% 8%;
-  column-gap: 6%;
+  grid-template-columns: 35% 27% 15% 8%;
+  column-gap: 5%;
   row-gap: 13%;
   justify-content: center;
 }
 
 /*Top of search field*/
 #searchAllFTSInput {
-  /*place-self: center;*/
+  width: 74%;
 }
 
 #categoryDropDown {
