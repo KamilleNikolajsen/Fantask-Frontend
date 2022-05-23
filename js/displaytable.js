@@ -56,11 +56,15 @@ function createIcon(item) {
 
   // Lav a tag til rundt om icon
   const atag = document.createElement('a');
-  atag.id=item.id;
+  atag.id = item.id;
   atag.type = item.type;
-  atag.href = item.type + ".html?id=" + item.id;
-  atag.target="popup";
-  atag.onclick = "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  //atag.href = item.type + ".html?id=" + item.id;
+  atag.target = "popup";
+  //atag.onclick = "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  atag.onclick = function () {
+    showpopup(item);
+  };
+
 
   // Opret td og læg atag ind i som har i tag i sig med class til fontawesome
   const td = document.createElement("td");
@@ -85,17 +89,21 @@ function createTableHeader(name) {
 function createTableRow() {
   return document.createElement('tr');
 }
+
 function emptyTable() {
   document.querySelector('#table').innerHTML = '';
 }
 
 function createATag(item, innertext) {
   const atag = document.createElement('a');
-  atag.id=item.id;
+  atag.id = item.id;
   atag.type = item.type;
-  atag.href = item.type + ".html?id=" + item.id;
-  atag.target="popup";
-  atag.onclick= "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  //atag.href = item.type + ".html?id=" + item.id;
+  atag.target = "popup";
+  //atag.onclick= "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+  atag.onclick = function () {
+    showpopup(item);
+  };
   atag.innerText = innertext;
 
   return atag;

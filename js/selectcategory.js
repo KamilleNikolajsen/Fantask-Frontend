@@ -87,10 +87,17 @@ function createDiv(id) {
 }
 
 function createLabel(forId, value) {
-  const label = document.querySelector('label');
+  const label = document.createElement("label");
   label.htmlFor = forId;
-  label.value = value;
+  label.textContent = value;
   return label;
+}
+
+function createSpan(id, value) {
+  const span = document.createElement("span");
+  span.id = id;
+  span.textContent = value;
+  return span;
 }
 
 function createInput(type, id) {
@@ -108,8 +115,12 @@ function createSelect(id, className, name) {
   return select;
 }
 
-function createOption() {
-
+function createOption(id, name) {
+  const option = document.createElement('option');
+  option.value = id;
+  option.id = name;
+  option.textContent = name;
+  return option;
 }
 
 
