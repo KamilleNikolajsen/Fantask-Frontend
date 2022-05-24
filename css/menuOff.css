@@ -1,0 +1,27 @@
+/*https://www.youtube.com/watch?v=7Iadn0Rm2T8*/
+
+.menu{
+  width: 12rem;
+  height: 4.5rem;
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 2px #999;
+  border-radius: 0.2rem;
+  list-style: none;
+  position: fixed;
+}
+
+.off {
+  top: -200%;
+  left: -200%;
+}
+
+.menu-item{
+  cursor: pointer;
+}
+
+.menu-item:hover,
+.menu-item:active{
+  color: rgba(37, 138, 199, 0.4);
+}
