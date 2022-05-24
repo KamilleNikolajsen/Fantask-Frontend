@@ -46,11 +46,14 @@ async function showItem(id) {
 
   // Dropdowns
 
+  const authorMap = new Map();
+
   //authorBook
   book.authors.forEach(author => {
     const ptag = document.createElement('p');
     ptag.innerText = author.authorName;
     authorBook.appendChild(ptag);
+    authorMap.set(author.authorName, author);
   });
 
   //seriesBook
@@ -145,6 +148,44 @@ async function showItem(id) {
 
   dateBook.innerText = format(new Date(book.date.split("T")[0]));
   saveBook.addEventListener('click', save);
+
+  //Skal lige tjekkes når backend virker
+  async function save() {
+
+    const authorList = Array.from(authorMap.values());
+
+
+    const body = {
+      bookId: id,
+      ISBN: isbnBook.value,
+      bookSeries: seriesBook.options[seriesBook.selectedIndex].value,
+      authors: authorList,//tjek hvordan man henter flere
+      publisher: publisherBook.options[publisherBook.selectedIndex].value,
+      bookCategory: categoryBook.options[categoryBook.selectedIndex].value,
+      bookGenre: genreBook.options[genreBook.selectedIndex].value,
+      number: numberBook.value,
+      title: titleBook.value,
+      originalPrice: usPriceBook.value,
+      danishPrice: danishBook.value,
+      salePrice: discountPrice.value,
+      type: typeBook.options[typeBook.selectedIndex].value,
+      description: memoBook.value,
+      date: dateBook.textContent,
+      unavailable: unavailableBook.checked,
+      coming: comingBook.checked,
+      subscription: subscriptionBook.checked,
+      backorder: backorderBook.checked,
+      outOfStock: outOfStockBook.checked,
+      hide: hideBook.checked,
+      onSale: onSaleBook.checked
+    }
+
+    console.log(JSON.stringify(body));
+    const t = JSON.stringify(body);
+
+    await fetchItems("http://localhost:8080/book/" + id, body);
+
+  }
 }
 
 function createOption(id, name) {
@@ -177,39 +218,3 @@ function getId() {
 }*/
 
 //cancelBook.addEventListener('click', cancel);
-
-
-//Skal lige tjekkes når backend virker
-async function save() {
-
-  const authorList = authorBook.childNodes;
-  console.log(authorList);
-
-  const body = {
-    bookId: getId(),
-    ISBN: isbnBook.value,
-    bookSeries: seriesBook.options[seriesBook.selectedIndex].value,
-    authors: authorList.value,//tjek hvordan man henter flere
-    publisher: publisherBook.options[publisherBook.selectedIndex].value,
-    bookCategory: categoryBook.options[categoryBook.selectedIndex].value,
-    bookGenre: genreBook.options[genreBook.selectedIndex].value,
-    number: numberBook.value,
-    title: titleBook.value,
-    originalPrice: usPriceBook.value,
-    danishPrice: danishBook.value,
-    salePrice: discountPrice.value,
-    type: typeBook.options[typeBook.selectedIndex].value,
-    description: memoBook.value,
-    date: dateBook.value,
-    unavailable: unavailableBook.checked,
-    coming: comingBook.checked,
-    subscription: subscriptionBook.checked,
-    backorder: backorderBook.checked,
-    outOfStock: outOfStockBook.checked,
-    hide: hideBook.checked,
-    onSale: onSaleBook.checked
-  }
-
-  await fetchItems("/book/{id}", body);
-
-}
