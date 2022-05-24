@@ -14,6 +14,7 @@ async function showItem(id) {
   const publisherBook = document.querySelector('#publisherDropDownBook');
   const usPriceBook = document.querySelector('#usPriceInputBook');
   const danishBook = document.querySelector('#danishPriceInput');
+  const discountPrice = document.querySelector('#discountPriceInput');
   const memoBook = document.querySelector('#memoInputBook');
   const typeBook = document.querySelector('#typeDropDownBook');
   const categoryBook = document.querySelector('#categoryDropDownBook');
@@ -143,7 +144,7 @@ async function showItem(id) {
   }
 
   dateBook.innerText = format(new Date(book.date.split("T")[0]));
-
+  saveBook.addEventListener('click', save);
 }
 
 function createOption(id, name) {
@@ -180,16 +181,35 @@ function getId() {
 
 //Skal lige tjekkes når backend virker
 async function save() {
-  const book = await fetchItemById(getId());
+
+  const authorList = authorBook.childNodes;
+  console.log(authorList);
 
   const body = {
-    method: "POST",
-    headers: {"Content-type": "application/json"},
-    body: JSON.stringify(book)
-  }.then((resonse) => resonse.json()).catch((reason) => alert(reason));
+    bookId: getId(),
+    ISBN: isbnBook.value,
+    bookSeries: seriesBook.options[seriesBook.selectedIndex].value,
+    authors: authorList.value,//tjek hvordan man henter flere
+    publisher: publisherBook.options[publisherBook.selectedIndex].value,
+    bookCategory: categoryBook.options[categoryBook.selectedIndex].value,
+    bookGenre: genreBook.options[genreBook.selectedIndex].value,
+    number: numberBook.value,
+    title: titleBook.value,
+    originalPrice: usPriceBook.value,
+    danishPrice: danishBook.value,
+    salePrice: discountPrice.value,
+    type: typeBook.options[typeBook.selectedIndex].value,
+    description: memoBook.value,
+    date: dateBook.value,
+    unavailable: unavailableBook.checked,
+    coming: comingBook.checked,
+    subscription: subscriptionBook.checked,
+    backorder: backorderBook.checked,
+    outOfStock: outOfStockBook.checked,
+    hide: hideBook.checked,
+    onSale: onSaleBook.checked
+  }
 
   await fetchItems("/book/{id}", body);
 
 }
-
-//saveBook.addEventListener('click', save);
