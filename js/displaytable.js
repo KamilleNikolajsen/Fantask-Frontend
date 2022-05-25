@@ -66,7 +66,7 @@ function createIcon(item) {
     showpopup(item);
   };
 
-  atag.addEventListener('contextmenu', (event, item) => {
+  atag.addEventListener('contextmenu', (event) => {
     event.preventDefault();
     showMenu(item);
   });
@@ -112,7 +112,7 @@ function createATag(item, innertext) {
   };
   atag.innerText = innertext;
 
-  atag.addEventListener('contextmenu', (event, item) => {
+  atag.addEventListener('contextmenu', (event) => {
     event.preventDefault();
     showMenu(item);
   });

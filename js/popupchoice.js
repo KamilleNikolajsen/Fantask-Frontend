@@ -28,9 +28,9 @@ function hideMenu() {
 
 // Lyt efter klik på valgene
 function addMenuListeners(item) {
-  document.querySelector('#menuCreate').addEventListener('click', createItemLikeThis(item));
+  document.querySelector('#menuCreate').addEventListener('click', () => createItemLikeThis(item));
 
-  document.querySelector('#menuDelete').addEventListener('click', deleteThisItem(item));
+  document.querySelector('#menuDelete').addEventListener('click', () => deleteThisItem(item));
 }
 
 
@@ -80,9 +80,14 @@ async function insertPopUpBook(item) {
   const saveBook = document.querySelector('#saveBook');
   const cancelBook = document.querySelector('#cancelBook');
 
+  const book = await fetchItemById(item.id);
+
   //authorBook
   const authorMap = new Map();
-  item.authors.forEach(author => {
+
+  console.log(book)
+
+  book.authors.forEach(author => {
     const span = document.createElement('span');
     span.innerText = author.authorName;
     authorBook.appendChild(span);
@@ -93,8 +98,8 @@ async function insertPopUpBook(item) {
   const listSer = await fetchList(bookUrl + "series");
   seriesBook.appendChild(createOption('nullSeries', "Vis alle"));
   listSer.forEach(element => seriesBook.appendChild(createOption(element.bookSeriesId, element.bookSeriesName)));
-  if (item.bookSeries != null) {
-    const element = document.getElementById(item.bookSeries.bookSeriesName);
+  if (book.bookSeries != null) {
+    const element = document.getElementById(book.bookSeries.bookSeriesName);
     element.selected = true;
   }
 
@@ -102,11 +107,11 @@ async function insertPopUpBook(item) {
   const listPub = await fetchList(bookUrl + "publisher");
   publisherBook.appendChild(createOption('nullPub', "Vis alle"));
   listPub.forEach(element => publisherBook.appendChild(createOption(element.publisherId, element.publisherName)));
-  if (item.publisher != null) {
-    const element = document.getElementById(item.publisher.publisherName);
+  if (book.publisher != null) {
+    const element = document.getElementById(book.publisher.publisherName);
     element.selected = true;
   }
 
-  subscriptionBook.selected = true;
-  dateBook = new Date();
+  subscriptionBook.checked = true;
+  dateBook.innerText = format(new Date());
 }
