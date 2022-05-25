@@ -114,4 +114,8 @@ async function insertPopUpBook(item) {
 
   subscriptionBook.checked = true;
   dateBook.innerText = format(new Date());
+
+  //herefter skal der være en lytning på gem og luk knap - giver mening at arbejde sammen med update da fetch bliver ens
+  //skal muligvis lige overveje at gøre nogle af felterne ovenfor required - de som ikke må være null i db
+  //skal gøres i den som opretter elementerne
 }
