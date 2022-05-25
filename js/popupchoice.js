@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Manipuler menuens visibilitet
-function showMenu(item) {
+function showMenu(item, tablerow) {
   menu.style.top = event.clientY - 20 + 'px';
   menu.style.left = event.clientX - 20 + 'px';
 
 // Lyt på valgmulighederne
-  addMenuListeners(item);
+  addMenuListeners(item, tablerow);
 }
 
 function hideMenu() {
@@ -27,10 +27,19 @@ function hideMenu() {
 
 
 // Lyt efter klik på valgene
-function addMenuListeners(item) {
-  document.querySelector('#menuCreate').addEventListener('click', () => createItemLikeThis(item));
+function addMenuListeners(item, tablerow) {
 
-  document.querySelector('#menuDelete').addEventListener('click', () => deleteThisItem(item));
+  // Opret eventlisteners på valg af opret og slet men sørg for at udskifte disse med nye hver gang
+  const oldCreate = document.querySelector('#menuCreate');
+  const newCreate = oldCreate.cloneNode(true);
+  oldCreate.parentNode.replaceChild(newCreate,oldCreate);
+  newCreate.addEventListener('click', () => createItemLikeThis(item));
+
+  const oldDelete = document.querySelector('#menuDelete');
+  const newDelete = oldDelete.cloneNode(true);
+  oldDelete.parentNode.replaceChild(newDelete, oldDelete);
+  newDelete.addEventListener('click', () => deleteThisItem(item,tablerow));
+
 }
 
 
@@ -45,11 +54,18 @@ async function createItemLikeThis(item) {
   insertPopUpBook(item);
 }
 
-async function deleteThisItem(item) {
+async function deleteThisItem(item, tablerow) {
   if (confirm("Er du sikker på du vil slette " + item.title + "?")) {
-    await fetch("http://localhost:8080/book/" + item.id, {
-      method: "DELETE"
-    }).catch((reason) => alert(reason));
+    try {
+      await fetch("http://localhost:8080/book/" + item.id, {
+        method: "DELETE"
+      })
+      tablerow.remove();
+
+    } catch(reason) {
+      alert(reason);
+    }
+
   }
 
 }

@@ -20,20 +20,20 @@ async function displayTable(list) {
 function createTableRowData(item) {
   const tableRow = createTableRow();
 
-  tableRow.appendChild(createIcon(item));
+  tableRow.appendChild(createIcon(item, tableRow));
 
-  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.author));
-  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.series));
-  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.subSeries));
-  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.number));
-  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.title));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.author, tableRow));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.series, tableRow));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.subSeries, tableRow));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.number, tableRow));
+  tableRow.appendChild(createTableData()).appendChild(createATag(item, item.title, tableRow));
 
   return tableRow;
 }
 
 
 // Lav ikon på baggrund af type (i tag)
-function createIcon(item) {
+function createIcon(item, tablerow) {
   const i = document.createElement('i');
 
   switch (item.type) {
@@ -63,7 +63,7 @@ function createIcon(item) {
   //atag.onclick = "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
 
   atag.onclick = function () {
-    showpopup(item);
+    showpopup(item, tablerow);
   };
 
   atag.addEventListener('contextmenu', (event) => {
@@ -100,7 +100,7 @@ function emptyTable() {
   document.querySelector('#table').innerHTML = '';
 }
 
-function createATag(item, innertext) {
+function createATag(item, innertext, tablerow) {
   const atag = document.createElement('a');
   atag.id = item.id;
   atag.type = item.type;
@@ -114,7 +114,7 @@ function createATag(item, innertext) {
 
   atag.addEventListener('contextmenu', (event) => {
     event.preventDefault();
-    showMenu(item);
+    showMenu(item, tablerow);
   });
 
   return atag;
