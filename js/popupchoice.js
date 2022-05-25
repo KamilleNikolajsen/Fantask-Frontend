@@ -83,9 +83,9 @@ async function insertPopUpBook(item) {
   //authorBook
   const authorMap = new Map();
   item.authors.forEach(author => {
-    const ptag = document.createElement('p');
-    ptag.innerText = author.authorName;
-    authorBook.appendChild(ptag);
+    const span = document.createElement('span');
+    span.innerText = author.authorName;
+    authorBook.appendChild(span);
     authorMap.set(author.authorName, author);
   });
 
