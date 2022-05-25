@@ -1,6 +1,8 @@
 const e = document.querySelector(".overlayPopup");
 const popupDiv = document.querySelector(".popup");
 const closeBtn = document.querySelector(".closePopup");
+const insertPopupDiv = document.querySelector('.popupInsert');
+const popupHeader = document.querySelector('#popupHeader');
 
 console.log("popup");
 
@@ -10,8 +12,11 @@ let itemData;
 
 function showpopup(item) {
   e.style.display = "block";
+  insertPopupDiv.innerHTML = "";
+  popupHeader.innerText = "Indskriv/Redigér bog:";
 
   itemData = item;
+
 
   insertPopupData();
   showItem(item.id);
@@ -29,62 +34,62 @@ function closepopup() {
 function insertPopupData() {
 
   //ISBN
-  popupDiv.appendChild(createLabel("ISBNInputBook", "ISBN:"));
+  insertPopupDiv.appendChild(createLabel("ISBNInputBook", "ISBN:"));
   inputElement(createInput("text", "ISBNInputBook"), "input");
 
   //Author
-  popupDiv.appendChild(createLabel("authorList", "Forfatter:"));
-  popupDiv.appendChild(createDiv("authorList"));
+  insertPopupDiv.appendChild(createLabel("authorList", "Forfatter:"));
+  insertPopupDiv.appendChild(createDiv("authorList"));
 
   //series DropDown
-  popupDiv.appendChild(createLabel("seriesDropDownBook", "Serie:"));
-  popupDiv.appendChild(createSelect("seriesDropDownBook", "dropdown", "seriesDropDown"));
+  insertPopupDiv.appendChild(createLabel("seriesDropDownBook", "Serie:"));
+  insertPopupDiv.appendChild(createSelect("seriesDropDownBook", "dropdown", "seriesDropDown"));
 
   //number book
-  popupDiv.appendChild(createLabel("numberInputBook", "Nr:"));
+  insertPopupDiv.appendChild(createLabel("numberInputBook", "Nr:"));
   inputElement(createInput("text", "numberInputBook"), "input");
 
   //title book
-  popupDiv.appendChild(createLabel("titleInputBook", "Titel:"));
+  insertPopupDiv.appendChild(createLabel("titleInputBook", "Titel:"));
   inputElement(createInput("text", "titleInputBook"), "input");
 
   //publisher DropDownBook
-  popupDiv.appendChild(createLabel("publisherDropDownBook", "Forlag:"));
-  popupDiv.appendChild(createSelect("publisherDropDownBook", "dropdown", "publisherDropDownBook"));
+  insertPopupDiv.appendChild(createLabel("publisherDropDownBook", "Forlag:"));
+  insertPopupDiv.appendChild(createSelect("publisherDropDownBook", "dropdown", "publisherDropDownBook"));
 
   //US price book
-  popupDiv.appendChild(createLabel("usPriceInputBook", "U.S. pris:"));
+  insertPopupDiv.appendChild(createLabel("usPriceInputBook", "U.S. pris:"));
   inputElement(createInput("text", "usPriceInputBook"), "input");
 
   //DK price book
-  popupDiv.appendChild(createLabel("danishPriceInput", "Dansk pris:"));
+  insertPopupDiv.appendChild(createLabel("danishPriceInput", "Dansk pris:"));
   inputElement(createInput("text", "danishPriceInput"), "input");
 
   //Discount price book
-  popupDiv.appendChild(createLabel("discountPriceInput", "Tilbuds pris:"));
+  insertPopupDiv.appendChild(createLabel("discountPriceInput", "Tilbuds pris:"));
   inputElement(createInput("text", "discountPriceInput"), "input");
 
   //Memo
-  popupDiv.appendChild(createLabel("memoInputBook", "Memo:"));
+  insertPopupDiv.appendChild(createLabel("memoInputBook", "Memo:"));
   const textArea = document.createElement("textarea");
   textArea.id = "memoInputBook";
   textArea.className = "input";
   textArea.style.resize = "none";
   textArea.style.rows = "5";
   textArea.style.cols = "50";
-  popupDiv.appendChild(textArea);
+  insertPopupDiv.appendChild(textArea);
 
   //Type DropDown
-  popupDiv.appendChild(createLabel("typeDropDownBook", "Type:"));
-  popupDiv.appendChild(createSelect("typeDropDownBook", "dropdown", "typeDropDownBook"));
+  insertPopupDiv.appendChild(createLabel("typeDropDownBook", "Type:"));
+  insertPopupDiv.appendChild(createSelect("typeDropDownBook", "dropdown", "typeDropDownBook"));
 
   //Category DropDown
-  popupDiv.appendChild(createLabel("categoryDropDownBook", "Kategori:"));
-  popupDiv.appendChild(createSelect("categoryDropDownBook", "dropdown", "categoryDropDownBook"));
+  insertPopupDiv.appendChild(createLabel("categoryDropDownBook", "Kategori:"));
+  insertPopupDiv.appendChild(createSelect("categoryDropDownBook", "dropdown", "categoryDropDownBook"));
 
   //Genre DropDownBook
-  popupDiv.appendChild(createLabel("genreDropDownBook", "Genre:"));
-  popupDiv.appendChild(createSelect("genreDropDownBook", "dropdown", "genreDropDownBook"));
+  insertPopupDiv.appendChild(createLabel("genreDropDownBook", "Genre:"));
+  insertPopupDiv.appendChild(createSelect("genreDropDownBook", "dropdown", "genreDropDownBook"));
 
   //----------- Checkboxes
 
@@ -112,8 +117,8 @@ function insertPopupData() {
   //Cover
   appentinputAndLabelToDiv(createDiv("cover"), createInput("checkbox", "coverBook"), createLabel("coverBook", "Cover"));
 
-  popupDiv.appendChild(createLabel("dateBook", "Dato:"));
-  popupDiv.appendChild(createSpan("dateBook", ""));
+  insertPopupDiv.appendChild(createLabel("dateBook", "Dato:"));
+  insertPopupDiv.appendChild(createSpan("dateBook", ""));
 
 }
 
@@ -121,11 +126,11 @@ function appentinputAndLabelToDiv(div, label, input) {
   div.appendChild(label);
   div.appendChild(input);
 
-  popupDiv.appendChild(div);
+  insertPopupDiv.appendChild(div);
 }
 
 
 function inputElement(element, className) {
   element.className = className;
-  popupDiv.appendChild(element);
+  insertPopupDiv.appendChild(element);
 }

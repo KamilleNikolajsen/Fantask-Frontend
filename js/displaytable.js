@@ -61,9 +61,15 @@ function createIcon(item) {
   //atag.href = item.type + ".html?id=" + item.id;
   atag.target = "popup";
   //atag.onclick = "window.open('" + item.type + "'.html', 'popup', 'width=600, height=600'); return false;";
+
   atag.onclick = function () {
     showpopup(item);
   };
+
+  atag.addEventListener('contextmenu', (event, item) => {
+    event.preventDefault();
+    showMenu(item);
+  });
 
 
   // Opret td og læg atag ind i som har i tag i sig med class til fontawesome
@@ -105,6 +111,11 @@ function createATag(item, innertext) {
     showpopup(item);
   };
   atag.innerText = innertext;
+
+  atag.addEventListener('contextmenu', (event, item) => {
+    event.preventDefault();
+    showMenu(item);
+  });
 
   return atag;
 }

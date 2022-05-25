@@ -154,7 +154,6 @@ async function showItem(id) {
 
     const authorList = Array.from(authorMap.values());
 
-
     const body = {
       bookId: id,
       ISBN: isbnBook.value,
