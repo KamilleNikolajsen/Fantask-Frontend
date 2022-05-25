@@ -8,26 +8,29 @@ a{
 }
 
 .input {
-  border-radius: 5px;
+  border-radius: 2px;
   border: none;
   box-shadow: 0 0 2px;
   padding: 5px 15px;
   font-size: 20px;
+  max-width: 300px;
 }
 
 .dropdown {
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 2%;
   font-size: 20px;
+  max-width: 300px;
 }
 
 .button {
-  border-radius: 20px;
+  border-radius: 5px;
   border: none;
   box-shadow: 0 0 2px;
   padding: 2% 15%;
   background-color: rgba(224, 238, 253, 0.54);
   font-size: 20px;
+  max-width: 300px;
 }
 
 .button:hover {

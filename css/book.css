@@ -1,27 +1,27 @@
-#content {
+/*#content {
   padding: 1%;
   display: grid;
   grid-template-columns: repeat(3, 2fr);
   grid-auto-rows: minmax(100%, auto);
-}
+}*/
 
-#popup {
+.popup {
+  display: grid;
   grid-column: 2;
   background-color: #dadada;
-  border-radius: 2px;
   box-shadow: 0 0 5px #344457;
 /*  padding: 2% 5%;*/
   width: 50%;
   margin: 0 auto;
 }
 
-#popup h3{
+.popup h3{
   margin: 0;
   padding: 20px 0;
   font-size: 25px;
 }
 
-#formPopUpBook {
+.formPopUpBook {
   margin: 20px;
   font-size: 20px;
 }

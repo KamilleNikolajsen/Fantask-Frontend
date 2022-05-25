@@ -48,11 +48,19 @@ async function showItem(id) {
 
   const authorMap = new Map();
 
+  //Empty the div element authorBook
+  while (authorBook.firstChild) {
+    authorBook.removeChild(authorBook.firstChild);
+  }
+
   //authorBook
   book.authors.forEach(author => {
-    const ptag = document.createElement('p');
-    ptag.innerText = author.authorName;
-    authorBook.appendChild(ptag);
+
+    //const ptag = document.createElement('p');
+    //ptag.innerText = author.authorName;
+
+    authorBook.appendChild(createSpan("", author.authorName));
+
     authorMap.set(author.authorName, author);
   });
 
@@ -178,9 +186,6 @@ async function showItem(id) {
       hide: hideBook.checked,
       onSale: onSaleBook.checked
     }
-
-    console.log(JSON.stringify(body));
-    const t = JSON.stringify(body);
 
     await fetchItems("http://localhost:8080/book/" + id, body);
 
