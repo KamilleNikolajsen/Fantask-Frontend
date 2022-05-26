@@ -32,13 +32,13 @@ function addMenuListeners(item, tablerow) {
   // Opret eventlisteners på valg af opret og slet men sørg for at udskifte disse med nye hver gang
   const oldCreate = document.querySelector('#menuCreate');
   const newCreate = oldCreate.cloneNode(true);
-  oldCreate.parentNode.replaceChild(newCreate,oldCreate);
+  oldCreate.parentNode.replaceChild(newCreate, oldCreate);
   newCreate.addEventListener('click', () => createItemLikeThis(item));
 
   const oldDelete = document.querySelector('#menuDelete');
   const newDelete = oldDelete.cloneNode(true);
   oldDelete.parentNode.replaceChild(newDelete, oldDelete);
-  newDelete.addEventListener('click', () => deleteThisItem(item,tablerow));
+  newDelete.addEventListener('click', () => deleteThisItem(item, tablerow));
 
 }
 
@@ -62,7 +62,7 @@ async function deleteThisItem(item, tablerow) {
       })
       tablerow.remove();
 
-    } catch(reason) {
+    } catch (reason) {
       alert(reason);
     }
 
@@ -97,6 +97,8 @@ async function insertPopUpBook(item) {
   const cancelBook = document.querySelector('#cancelBook');
 
   const book = await fetchItemById(item.id);
+
+  cancelBook.addEventListener('click', cancelpopup);
 
   //authorBook
   const authorMap = new Map();
@@ -134,4 +136,73 @@ async function insertPopUpBook(item) {
   //herefter skal der være en lytning på gem og luk knap - giver mening at arbejde sammen med update da fetch bliver ens
   //skal muligvis lige overveje at gøre nogle af felterne ovenfor required - de som ikke må være null i db
   //skal gøres i den som opretter elementerne
+  await saveBook.addEventListener('click', save());
+
+  async function save() {
+
+    const authorList = Array.from(authorMap.values());
+    let category = "";
+
+    if (categoryBook.options[categoryBook.selectedIndex].value === 'nullCat') {
+      category = null;
+    } else {
+      category = {bookCategoryId: categoryBook.options[categoryBook.selectedIndex].value};
+    }
+
+    let bookseries = "";
+    if (seriesBook.options[seriesBook.selectedIndex].value === 'nullSeries') {
+      bookseries = null;
+    } else {
+      bookseries = {bookSeriesId: seriesBook.options[seriesBook.selectedIndex].value};
+    }
+
+    let pub = "";
+    if (publisherBook.options[publisherBook.selectedIndex].value === 'nullPub') {
+      pub = null;
+    } else {
+      pub = {publisherId: publisherBook.options[publisherBook.selectedIndex].value};
+    }
+
+    let genre = "";
+    if (genreBook.options[genreBook.selectedIndex].value === 'nullGen') {
+      genre = null;
+    } else {
+      genre = {bookGenreId: genreBook.options[genreBook.selectedIndex].value};
+    }
+
+    let typ = "";
+    if (typeBook.options[typeBook.selectedIndex].value === 'nullType') {
+      typ = null;
+    } else {
+      typ = typeBook.options[typeBook.selectedIndex].value;
+    }
+
+    const body = {
+      bookId: id,
+      isbn: isbnBook.value,
+      bookSeries: bookseries,
+      authors: authorList,//tjek hvordan man henter flere
+      publisher: pub,
+      bookCategory: category,
+      bookGenre: genre,
+      number: numberBook.value,
+      title: titleBook.value,
+      originalPrice: usPriceBook.value,
+      danishPrice: danishBook.value,
+      salePrice: discountPrice.value,
+      type: typ,
+      description: memoBook.value,
+      date: formatDateForString(dateBook.textContent),
+      unavailable: unavailableBook.checked,
+      coming: comingBook.checked,
+      subscription: subscriptionBook.checked,
+      backorder: backorderBook.checked,
+      outOfStock: outOfStockBook.checked,
+      hide: hideBook.checked,
+      onSale: onSaleBook.checked
+    }
+
+    await fetchItems("http://localhost:8080/book/", body);
+    closepopup();
+  }
 }

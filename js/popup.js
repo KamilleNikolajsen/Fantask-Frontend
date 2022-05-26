@@ -22,11 +22,13 @@ function showpopup(item) {
   showItem(item.id);
 }
 
-function closepopup() {
-  /*if (confirm("Er du sikker på du vil lukke uden at gemme?")) {
+function cancelpopup() {
+  if (confirm("Er du sikker på du vil lukke uden at gemme?")) {
     e.style.display = "none";
-  }*/
+  }
+}
 
+function closepopup() {
   e.style.display = "none";
 }
 

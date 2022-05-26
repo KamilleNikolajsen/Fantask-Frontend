@@ -31,6 +31,7 @@ async function showItem(id) {
   const saveBook = document.querySelector('#saveBook');
   const cancelBook = document.querySelector('#cancelBook');
 
+  cancelBook.addEventListener('click', cancelpopup);
 
   const book = await fetchItemById(id);
   console.log(book);
@@ -61,7 +62,7 @@ async function showItem(id) {
 
     authorBook.appendChild(createSpan("", author.authorName));
 
-    authorMap.set(author.authorName, author);
+    authorMap.set(author.id, author);
   });
 
   //seriesBook
@@ -142,23 +143,58 @@ async function showItem(id) {
   async function save() {
 
     const authorList = Array.from(authorMap.values());
+    let category = "";
+
+    if (categoryBook.options[categoryBook.selectedIndex].value === 'nullCat') {
+      category = null;
+    } else {
+      category = {bookCategoryId: categoryBook.options[categoryBook.selectedIndex].value};
+    }
+
+    let bookseries = "";
+    if (seriesBook.options[seriesBook.selectedIndex].value === 'nullSeries') {
+      bookseries = null;
+    } else {
+      bookseries = {bookSeriesId: seriesBook.options[seriesBook.selectedIndex].value};
+    }
+
+    let pub = "";
+    if (publisherBook.options[publisherBook.selectedIndex].value === 'nullPub') {
+      pub = null;
+    } else {
+      pub = {publisherId: publisherBook.options[publisherBook.selectedIndex].value};
+    }
+
+    let genre = "";
+    if (genreBook.options[genreBook.selectedIndex].value === 'nullGen') {
+      genre = null;
+    } else {
+      genre = {bookGenreId: genreBook.options[genreBook.selectedIndex].value};
+    }
+
+    let typ = "";
+    if (typeBook.options[typeBook.selectedIndex].value === 'nullType') {
+      typ = null;
+    } else {
+      typ = typeBook.options[typeBook.selectedIndex].value;
+    }
 
     const body = {
       bookId: id,
-      ISBN: isbnBook.value,
-      bookSeries: seriesBook.options[seriesBook.selectedIndex].value,
+      isbn: isbnBook.value,
+      bookSeries: bookseries,
       authors: authorList,//tjek hvordan man henter flere
-      publisher: publisherBook.options[publisherBook.selectedIndex].value,
-      bookCategory: categoryBook.options[categoryBook.selectedIndex].value,
-      bookGenre: genreBook.options[genreBook.selectedIndex].value,
+      publisher: pub,
+      bookCategory: category,
+      bookGenre: genre,
       number: numberBook.value,
       title: titleBook.value,
       originalPrice: usPriceBook.value,
       danishPrice: danishBook.value,
       salePrice: discountPrice.value,
-      type: typeBook.options[typeBook.selectedIndex].value,
+      type: typ,
       description: memoBook.value,
-      date: dateBook.textContent,
+      date: formatDateForString(dateBook.textContent),
       unavailable: unavailableBook.checked,
       coming: comingBook.checked,
       subscription: subscriptionBook.checked,
@@ -169,7 +205,7 @@ async function showItem(id) {
     }
 
     await fetchItems("http://localhost:8080/book/" + id, body);
-
+    closepopup();
   }
 }
 
@@ -222,4 +258,11 @@ function format(inputDate) {
     .padStart(2, '0');
 
   return `${date}-${month}-${year}`;
+}
+
+function formatDateForString(string) {
+  const dateArray = string.split('-');
+
+  const dateFormat = dateArray[2] + '-' + dateArray[1] + '-' + dateArray[0];
+  return dateFormat;
 }
