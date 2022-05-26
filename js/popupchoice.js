@@ -166,14 +166,12 @@ async function insertPopUpBook(item) {
   saveBook.addEventListener('click', () => {
     save()
   });
-  /*await saveBook.addEventListener('keypress', (event) => {
+  saveBook.addEventListener('keypress', (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
       save();
     }
   })
-
-   */
 
   async function save() {
     const authorList = Array.from(authorMap.values());
