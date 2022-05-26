@@ -130,16 +130,52 @@ async function insertPopUpBook(item) {
     element.selected = true;
   }
 
+  //typeBook
+  const types = await fetchList(bookUrl + "types");
+  typeBook.appendChild(createOption('nullType', 'Vis alle'));
+  types.forEach(type => typeBook.appendChild(createOption(type, type)));
+  if (book.type != null) {
+    const element = document.getElementById(book.type);
+    element.selected = true;
+  }
+
+  //categoryBook
+  const listCat = await fetchList(bookUrl + "categories");
+  categoryBook.appendChild(createOption('nullCat', "Vis alle"));
+  listCat.forEach(element => categoryBook.appendChild(createOption(element.bookCategoryId, element.categoryName)));
+  if (book.bookCategory != null) {
+    const element = document.getElementById(book.bookCategory.categoryName);
+    element.selected = true;
+  }
+
+  //genreBook
+  const listGenre = await fetchList(bookUrl + "genre");
+  genreBook.appendChild(createOption('nullGen', "Vis alle"));
+  listGenre.forEach(element => genreBook.appendChild(createOption(element.bookGenreId, element.bookGenreName)));
+  if (book.bookGenre != null) {
+    const element = document.getElementById(book.bookGenre.bookGenreName);
+    element.selected = true;
+  }
+
   subscriptionBook.checked = true;
   dateBook.innerText = format(new Date());
 
   //herefter skal der være en lytning på gem og luk knap - giver mening at arbejde sammen med update da fetch bliver ens
   //skal muligvis lige overveje at gøre nogle af felterne ovenfor required - de som ikke må være null i db
   //skal gøres i den som opretter elementerne
-  await saveBook.addEventListener('click', save());
+  saveBook.addEventListener('click', () => {
+    save()
+  });
+  /*await saveBook.addEventListener('keypress', (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      save();
+    }
+  })
+
+   */
 
   async function save() {
-
     const authorList = Array.from(authorMap.values());
     let category = "";
 
@@ -178,7 +214,6 @@ async function insertPopUpBook(item) {
     }
 
     const body = {
-      bookId: id,
       isbn: isbnBook.value,
       bookSeries: bookseries,
       authors: authorList,//tjek hvordan man henter flere

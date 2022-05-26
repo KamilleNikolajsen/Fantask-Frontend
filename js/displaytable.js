@@ -68,7 +68,7 @@ function createIcon(item, tablerow) {
 
   atag.addEventListener('contextmenu', (event) => {
     event.preventDefault();
-    showMenu(item);
+    showMenu(item, tablerow);
   });
 
 
