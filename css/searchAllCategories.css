@@ -5,12 +5,12 @@
   grid-auto-rows: minmax(100%, auto);
 }
 
-#showSearchedList a{
+#showSearchedList a {
   cursor: pointer;
 }
 
 .fa-square-xmark {
-  color: #c21818;
+  color: #dc3636;
   width: 4%;
 }
 
@@ -19,9 +19,8 @@
   margin-top: 2%;
   padding: 3% 2%;
   background-color: #dadada;
-  border-radius: 2px;
+  border-style: groove;
   grid-column: 2 / span 3;
-  box-shadow: 0 0 5px #344457;
 }
 
 #formSearchCrossCategories {
@@ -29,23 +28,64 @@
   display: grid;
 
   grid-template-columns: 35% 27% 15% 8%;
+
   column-gap: 5%;
-  row-gap: 13%;
   justify-content: center;
 }
 
 /*Top of search field*/
-#searchAllFTSInput {
-  width: 74%;
+#searchFTS {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  border-style: groove;
+  padding: 5px;
 }
+
+#searchAllFTSInput {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  margin-bottom: 10px;
+}
+
+#searchAllAuthorArtistFTSInput {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+#x {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  place-self: center;
+}
+
+#manipulateSection {
+  margin: 10px;
+  grid-column: 1/5;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 5% 40% 10% 40% 5%;
+}
+
+#manipulateSection div {
+  margin: 10px;
+}
+
+.dropdownselectsearchtype {
+  font-size: 20px;
+  max-height: 50px;
+}
+
 
 #categoryDropDown {
   /*grid-column: 3 /span 1;*/
   /*place-self: center;*/
+  grid-column: 2/3;
 }
 
 #timeDropDown {
-  margin: 2px 0 0 0;
+  grid-column: 3/4;
   /*  grid-column: 4;*/
   /*grid-row: 1;*/
   /*place-self: center;*/
@@ -59,15 +99,25 @@
 
 /*Rest of generic search field*/
 
+#bools_boxe1 {
+  grid-column: 2/3;
+}
+
+#bools_boxe2 {
+  grid-column: 3/4;
+}
+
 #bools_boxe1, #bools_boxe2 {
   display: grid;
   row-gap: 10%;
+  grid-row: 4;
   grid-template-columns: auto;
   min-width: 200px;
+
 }
 
 #bools_boxe1 div, #bools_boxe2 div {
-  grid-template-columns: auto auto;
+ /grid-template-columns: auto auto;
 }
 
 
@@ -77,6 +127,20 @@
     grid-column: 1 / span 5;
   }
 
+}
+
+.buttonsearch {
+  max-height: 50px;
+  border-radius: 5px;
+  border-color: rgba(130, 180, 211, 0.79);
+  background-color: rgba(141, 191, 220, 0.79);
+  cursor: pointer;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.buttonsearch:hover {
+background-color: rgba(102, 166, 211, 0.79);
 }
 
 /*@media only screen and (max-width: 600px) {

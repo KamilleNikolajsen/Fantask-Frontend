@@ -1,0 +1,70 @@
+#seriesDiv {
+  grid-column: 2/3;
+  grid-row: 2;
+  display: grid;
+}
+
+#seriesDiv label {
+  grid-row: 1/2;
+}
+
+#titleDiv {
+  grid-column: 4/5;
+  grid-row: 2;
+  display: grid;
+}
+
+#titleDiv label {
+  grid-row: 1/2;
+}
+
+#isbnDiv {
+  grid-column: 2/3;
+  grid-row: 3;
+  display: grid;
+}
+
+#isbnDiv label {
+  grid-row: 1/2;
+}
+
+#pubDiv {
+  grid-column: 4/5;
+  grid-row: 3;
+  display: grid;
+}
+
+#pubDiv label {
+  grid-row: 1/2;
+}
+
+#genreDiv {
+  grid-column: 2/3;
+  grid-row: 4;
+  display: grid;
+}
+
+#genreDiv label {
+  grid-row: 1/2;
+}
+
+#series {
+
+}
+
+#title {
+
+}
+
+#isbn {
+
+}
+
+#publisher {
+
+}
+
+
+.inputsearch {
+  font-size: 20px;
+}

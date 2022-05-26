@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../css/generic.css">
   <link rel="stylesheet" href="../css/searchAllCategories.css">
   <link rel="stylesheet" href="../css/displaytable.css">
+  <link rel="stylesheet" href="../css/displaysearchbook.css">
   <link rel="stylesheet" href="../css/popup.css">
   <link rel="stylesheet" href="../css/menuOff.css">
 
@@ -16,14 +17,14 @@
   <div id="search">
     <form method="get" id="formSearchCrossCategories">
 
-      <div>
+      <div id="searchFTS">
         <input type="text" placeholder="Serie, titel etc." id="searchAllFTSInput" class="input">
         <input type="text" placeholder="Forfatter" id="searchAllAuthorArtistFTSInput" class="input">
-        <a class="fa-solid fa-square-xmark fa-xl" href="searchAllCategories.html"></a>
+        <a class="fa-solid fa-square-xmark fa-xl" href="searchAllCategories.html" id="x"></a>
       </div>
 
 
-      <select id="categoryDropDown" class="dropdown" name="dropdowncategory">
+      <select id="categoryDropDown" class="dropdownselectsearchtype" name="dropdowncategory">
         <option value="all" selected>Alle</option>
         <option value="comic">Tegneserier</option>
         <option value="book">Bøger</option>
@@ -32,7 +33,7 @@
         <option value="film">Film</option>
       </select>
 
-      <select id="timeDropDown" class="dropdown" name="dropdowntime">
+      <select id="timeDropDown" class="dropdownselectsearchtype" name="dropdowntime">
         <option value="null" selected>Vis alle</option>
         <option value="4">4 dage siden</option>
         <option value="7">1 uge siden</option>
@@ -41,43 +42,49 @@
         <option value="183">6 måneder siden</option>
       </select>
 
-      <input type="submit" value="Søg" class="button">
-
-      <div id="bools_boxe1">
-        <div id="unavailable">
-          <input type="checkbox" id="searchAllUnavailable" checked>
-          <label for="searchAllUnavailable">Ekskluder udgåede</label>
-        </div>
-        <div id="excludecoming">
-          <input type="checkbox" id="searchAllExcludeComing" checked>
-          <label for="searchAllExcludeComing">Ekskluder kommende</label>
-        </div>
-        <div id="outOfStock">
-          <input type="checkbox" id="searchAllOutOfStock" checked>
-          <label for="searchAllOutOfStock">Ekskluder udsolgte</label>
-        </div>
-      </div>
-
-      <div id="bools_boxe2">
-        <div id="onSale">
-          <input type="checkbox" id="searchAllOnSale">
-          <label for="searchAllOnSale">Vis kun Tilbud</label>
-        </div>
-
-
-        <div id="coming">
-          <input type="checkbox" id="searchAllComing">
-          <label for="searchAllComing">Vis kun kommende</label>
-        </div>
-
-
-        <div id="box">
-          <input type="checkbox" id="searchAllbox">
-          <label for="searchAllbox">Vis kun bokssæt</label>
-        </div>
-      </div>
+      <input type="submit" value="Søg" class="buttonsearch">
 
       <div id="manipulateSection"></div>
+
+
+
+
+        <div id="bools_boxe1">
+          <div id="unavailable">
+            <input type="checkbox" id="searchAllUnavailable" checked>
+            <label for="searchAllUnavailable">Ekskluder udgåede</label>
+          </div>
+          <div id="excludecoming">
+            <input type="checkbox" id="searchAllExcludeComing" checked>
+            <label for="searchAllExcludeComing">Ekskluder kommende</label>
+          </div>
+          <div id="outOfStock">
+            <input type="checkbox" id="searchAllOutOfStock" checked>
+            <label for="searchAllOutOfStock">Ekskluder udsolgte</label>
+          </div>
+        </div>
+
+
+        <div id="bools_boxe2">
+          <div id="onSale">
+            <input type="checkbox" id="searchAllOnSale">
+            <label for="searchAllOnSale">Vis kun Tilbud</label>
+          </div>
+
+
+          <div id="coming">
+            <input type="checkbox" id="searchAllComing">
+            <label for="searchAllComing">Vis kun kommende</label>
+          </div>
+
+
+          <div id="box">
+            <input type="checkbox" id="searchAllbox">
+            <label for="searchAllbox">Vis kun bokssæt</label>
+          </div>
+        </div>
+
+
 
 
     </form>

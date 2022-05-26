@@ -23,6 +23,9 @@ function displaySelectedCategory(event) {
     case 'film':
       displaySearchFieldFilm();
       break;
+    case 'all':
+      window.location.reload();
+      break;
   }
 }
 
@@ -31,27 +34,59 @@ async function displaySearchFieldBook() {
   manipulativeSection.innerHTML = '';
 
   // Insæt felter over boolean for bog
+  // Indsæt serie input felt
+  const seriesDiv = createDiv('seriesDiv');
+  const labelseries = createLabel('series', 'Serie:');
+  const inputseries= createInput('text', 'series');
+  inputseries.className = 'inputsearch';
+  seriesDiv.appendChild(labelseries);
+  seriesDiv.appendChild(inputseries);
+  manipulativeSection.appendChild(seriesDiv);
+
+  //Indsæt titel
+  const titleDiv = createDiv('titleDiv');
+  const labeltitle = createLabel('title', 'Titel:');
+  const inputtitle= createInput('text', 'title');
+  inputtitle.className = 'inputsearch';
+  titleDiv.appendChild(labeltitle);
+  titleDiv.appendChild(inputtitle);
+  manipulativeSection.appendChild(titleDiv);
+
   // indsæt isbn input felt
-  const divisbn = appendManipulativeSection('divisbn');
+  const isbnDiv = createDiv('isbnDiv');
   const label = createLabel('isbn', 'ISBN:');
   const input = createInput('text', 'isbn');
-  divisbn.appendChild(label, input);
+  input.className = 'inputsearch';
+  isbnDiv.appendChild(label);
+  isbnDiv.appendChild(input);
+  manipulativeSection.appendChild(isbnDiv);
 
   // indsæt dropdown forlag
-  const divpub = appendManipulativeSection('divpublisher');
-  const labelpub = createLabel('publisher', 'Forlag');
-  const dropdownpub = createSelect('publisher', 'dropdown', 'publisher');
+  const pubDiv = createDiv('pubDiv');
+  const labelpub = createLabel('publisher', 'Forlag:');
+  const dropdownpub = createSelect('publisher', 'dropdownselectsearchtype', 'publisher');
   // fetch options for dropdown
-  const ddpub = await fillDropDown();
+  const publisherlist = await fetchList("http://localhost:8080/book/publisher");
+  dropdownpub.appendChild(createOption('null', ''))
+  publisherlist.forEach(publisher => dropdownpub.appendChild(createOption(publisher.publisherId, publisher.publisherName)));
   // insæt dropdown forlag ind i div
-  divpub.appendChild(labelpub, dropdownpub);
-  //indsæt options fra fetch
-  dropdownpub.appendChild();
-  // indsæt dropdown genre
-  const dropdowngenre = appendManipulativeSection('divgenre')
-  //fetch drowdown for genre
+  pubDiv.appendChild(labelpub);
+  pubDiv.appendChild(dropdownpub);
+  manipulativeSection.appendChild(pubDiv);
 
-  //her
+
+  // indsæt dropdown genre
+  const genreDiv = createDiv('genreDiv');
+  const labelgenre = createLabel('genre', 'Genre:');
+  const dropdowngenre = createSelect('genre', 'dropdownselectsearchtype', 'genre');
+  // fetch options for dropdown
+  const genrelist = await fetchList("http://localhost:8080/book/genre");
+  dropdowngenre.appendChild(createOption('null', ''))
+  genrelist.forEach(genre => dropdowngenre.appendChild(createOption(genre.bookGenreId, genre.bookGenreName)));
+  // insæt dropdown forlag ind i div
+  genreDiv.appendChild(labelgenre);
+  genreDiv.appendChild(dropdowngenre);
+  manipulativeSection.appendChild(genreDiv);
 }
 
 
@@ -123,6 +158,3 @@ function createOption(id, name) {
   return option;
 }
 
-
-function fillDropDown() {
-}

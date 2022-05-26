@@ -8,7 +8,7 @@ a{
 }
 
 .input {
-  border-radius: 2px;
+  border-radius: 1px;
   border: none;
   box-shadow: 0 0 2px;
   padding: 5px 15px;
@@ -17,7 +17,7 @@ a{
 }
 
 .dropdown {
-  border-radius: 5px;
+  border-radius: 1px;
   padding: 2%;
   font-size: 20px;
   max-width: 300px;
