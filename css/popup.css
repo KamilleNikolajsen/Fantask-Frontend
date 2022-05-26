@@ -1,42 +1,193 @@
 .overlayPopup {
-  position:absolute;
-  display:none;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  background:rgba(0, 0, 0, 0.8);
-  z-index:9999;
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
 }
+
 .closePopup {
-  position:absolute;
-  top:-40px;
-  right:-5px;
-  width:25px;
-  height:25px;
-  cursor:pointer;
+  position: absolute;
+  top: 11px;
+  right: -1px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
   display: inline-block;
 }
+
 .popup {
-  position:absolute;
-  width:50%;
-  height:50%;
-  top:25%;
-  left:25%;
-  text-align:center;
-  border-radius: 10px;
+  width: 500px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  text-align: center;
+  border-radius: 2px;
 
   grid-column: 2;
   background-color: #dadada;
   box-shadow: 0 0 5px #344457;
 }
 
-.popupInsert{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-}
-
-.popup h3{
-  margin: 0;
+.popup h3 {
+  margin: 0 0 10px 0;
   padding: 20px 0;
 }
+
+.popup label {
+  grid-column: 1;
+}
+
+.popup input {
+  font-size: 15px;
+}
+
+.popup select {
+  grid-column: 2/5;
+  font-size: 15px;
+}
+
+#popupButtons {
+  margin: 30px 0;
+}
+
+.popupInsert {
+  display: grid;
+  /* grid-template-columns: auto auto 10% 10%; */
+  grid-template-columns: 20% 30% 20% 15%;
+  row-gap: 5px;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#authorList{
+  grid-column: 2/5;
+  margin: 5px;
+}
+
+#authorList span{
+  margin-right: 20px;
+}
+
+#ISBNInputBook {
+  grid-column: 2/5;
+}
+
+
+/*numberInputBook*/
+.popup label:nth-of-type(4) {
+  grid-column: 3;
+  grid-row: 3;
+  text-align: end;
+}
+
+#numberInputBook {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+/*seriesDropDownBook*/
+#seriesDropDownBook {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/*discountPriceInput*/
+/*.popup label:nth-of-type(7) {
+  grid-column: 1/4;
+  grid-row: 6;
+  text-align: end;
+}*/
+
+#discountPriceInput {
+  width: 80%;
+}
+
+#discountPriceDiv{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column: 4/5;
+  align-items: center;
+  justify-items: center;
+}
+
+/*danishPriceInput*/
+.popup label:nth-of-type(8) {
+  grid-column: 3;
+  grid-row: 6;
+  text-align: end;
+}
+
+/*discountPriceInput*/
+.popup label:nth-of-type(9) {
+  grid-column: 3;
+  grid-row: 7;
+  text-align: end;
+}
+
+#memoInputBook {
+  grid-column: 2/5;
+}
+
+.popupInsert div {
+  text-align: start;
+}
+
+.popupInsert div:nth-of-type(4) {
+  grid-column: 2;
+}
+
+.popupInsert div:nth-of-type(5) {
+  grid-column: 1;
+}
+
+.popupInsert div:nth-of-type(7) {
+  grid-column: 1;
+}
+
+.popupInsert div:nth-of-type(9) {
+  text-align: end;
+  grid-column: 1;
+}
+
+/*dateBook*/
+.popup label:nth-of-type(14) {
+  grid-column: 3;
+  grid-row: 14;
+  text-align: end;
+}
+
+#dateBook {
+  grid-column: 4;
+  grid-row: 14;
+}
+
+
+#publisherDropDownBook{
+  max-width: 100%;
+}
+
+#usPriceInputBook{
+  width: 20%;
+}
+
+#titleInputBook{
+  grid-column: 2/5;
+}
+
+#cover{
+  float: left;
+  width: 37%;
+}
+
+#categoryAndType, #otherInformations{
+  grid-column: 1/5;
+  text-align: start;
+  border-bottom: solid 1px black;
+  margin-top: 25px;
+}
+

@@ -67,17 +67,25 @@ function insertPopupData() {
 
   //Discount price book
   insertPopupDiv.appendChild(createLabel("discountPriceInput", "Tilbuds pris:"));
-  inputElement(createInput("text", "discountPriceInput"), "input");
+
+  const discountPriceDiv = createDiv("discountPriceDiv")
+  /*inputElement(createInput("text", "discountPriceInput"), "input");*/
+  /*insertPopupDiv.appendChild(createInput("checkbox", "onSaleBook"));*/
+  discountPriceDiv.appendChild(createInput("text", "discountPriceInput"));
+  discountPriceDiv.appendChild(createInput("checkbox", "onSaleBook"));
+  insertPopupDiv.appendChild(discountPriceDiv);
 
   //Memo
   insertPopupDiv.appendChild(createLabel("memoInputBook", "Memo:"));
   const textArea = document.createElement("textarea");
   textArea.id = "memoInputBook";
-  textArea.className = "input";
   textArea.style.resize = "none";
-  textArea.style.rows = "5";
-  textArea.style.cols = "50";
+  textArea.rows = 8;
+  textArea.cols = 50;
   insertPopupDiv.appendChild(textArea);
+
+  insertPopupDiv.appendChild(createSpan("categoryAndType", "Genre og Type"));
+
 
   //Type DropDown
   insertPopupDiv.appendChild(createLabel("typeDropDownBook", "Type:"));
@@ -92,33 +100,53 @@ function insertPopupData() {
   insertPopupDiv.appendChild(createSelect("genreDropDownBook", "dropdown", "genreDropDownBook"));
 
   //----------- Checkboxes
-
-  //outOfStock
-  appentinputAndLabelToDiv(createDiv("outOfStock"), createInput("checkbox", "outOfStockBook"), createLabel("outOfStockBook", "Udsolgt"));
-
-  //unavailable
-  appentinputAndLabelToDiv(createDiv("unavailable"), createInput("checkbox", "unavailableBook"), createLabel("unavailableBook", "Udgået"));
+  insertPopupDiv.appendChild(createSpan("otherInformations", "Andre informationer"));
 
   //subscription
-  appentinputAndLabelToDiv(createDiv("subscription"), createInput("checkbox", "subscriptionBook"), createLabel("subscriptionBook", "Abokørsel"));
+  insertPopupDiv.appendChild(appentinputAndLabelToDiv(
+    createDiv("subscription"),
+    createInput("checkbox", "subscriptionBook"),
+    createLabel("subscriptionBook", "Abokørsel")));
 
   //backorder
-  appentinputAndLabelToDiv(createDiv("backorder"), createInput("checkbox", "backorderBook"), createLabel("backorderBook", "Restordre"));
+  insertPopupDiv.appendChild(appentinputAndLabelToDiv(
+    createDiv("backorder"),
+    createInput("checkbox", "backorderBook"),
+    createLabel("backorderBook", "Restordre")));
 
   //coming
-  appentinputAndLabelToDiv(createDiv("coming"), createInput("checkbox", "comingBook"), createLabel("comingBook", "Kommende"));
+  insertPopupDiv.appendChild(appentinputAndLabelToDiv(
+    createDiv("coming"),
+    createInput("checkbox", "comingBook"),
+    createLabel("comingBook", "Kommende")));
 
-  //onSale
-  appentinputAndLabelToDiv(createDiv("coming"), createInput("checkbox", "onSaleBook"), createLabel("onSaleBook", "Tilbud"));
+  //outOfStock
+  insertPopupDiv.appendChild(
+    appentinputAndLabelToDiv(
+      createDiv("outOfStock"),
+      createInput("checkbox", "outOfStockBook"),
+      createLabel("outOfStockBook", "Udsolgt")));
+
+  //unavailable
+  insertPopupDiv.appendChild(appentinputAndLabelToDiv(
+    createDiv("unavailable"),
+    createInput("checkbox", "unavailableBook"),
+    createLabel("unavailableBook", "Udgået")));
 
   //hide
-  appentinputAndLabelToDiv(createDiv("hide"), createInput("checkbox", "hideBook"), createLabel("hideBook", "Skjul"));
+  insertPopupDiv.appendChild(appentinputAndLabelToDiv(
+    createDiv("hide"),
+    createInput("checkbox", "hideBook"),
+    createLabel("hideBook", "Skjul")));
 
-  //Cover
-  appentinputAndLabelToDiv(createDiv("cover"), createInput("checkbox", "coverBook"), createLabel("coverBook", "Cover"));
-
+  //Dato
   insertPopupDiv.appendChild(createLabel("dateBook", "Dato:"));
   insertPopupDiv.appendChild(createSpan("dateBook", ""));
+
+  //Cover
+  const cover = document.querySelector("#cover");
+  cover.innerHTML = "";
+  cover.appendChild(appentinputAndLabelToDiv(createDiv("cover"), createInput("checkbox", "coverBook"), createLabel("coverBook", "Cover")));
 
 }
 
@@ -126,7 +154,7 @@ function appentinputAndLabelToDiv(div, label, input) {
   div.appendChild(label);
   div.appendChild(input);
 
-  insertPopupDiv.appendChild(div);
+  return div;
 }
 
 
